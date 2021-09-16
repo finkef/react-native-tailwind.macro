@@ -1,0 +1,22 @@
+{
+  "name": "react-native-tailwind.macro-example",
+  "displayName": "TailwindMacro Example",
+  "expo": {
+    "name": "react-native-tailwind.macro-example",
+    "slug": "react-native-tailwind-macro-example",
+    "description": "Example app for react-native-tailwind.macro",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
