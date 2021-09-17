@@ -60,6 +60,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-tester": "^10.1.0",
     "commitlint": "^11.0.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.1.3",
@@ -131,7 +132,8 @@
           "useTabs": false,
           "semi": false
         }
-      ]
+      ],
+      "react-native/no-inline-styles": "off"
     }
   },
   "eslintIgnore": [
@@ -164,6 +166,12 @@
   "dependencies": {
     "@babel/template": "^7.15.4",
     "babel-plugin-macros": "^3.1.0",
-    "nanoid": "^3.1.25"
+    "nanoid": "^3.1.25",
+    "tailwind-rn": "^3.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
