@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react-native-tailwind.macro single-prop.js: single-prop.js 1`] = `
+
+import tw from '../../macro'
+
+const Comp = () => <View tw="px-8" />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const Comp = () => <View tw="px-8" />
+
+
+`;
