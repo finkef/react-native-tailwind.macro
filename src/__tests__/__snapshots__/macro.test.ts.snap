@@ -1,5 +1,301 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`react-native-tailwind.macro array-style-prop.js: array-style-prop.js 1`] = `
+
+import tw from '../../macro'
+
+const Prepend = () => (
+  <View tw="px-8" style={[styles.a, { backgroundColor: 'pink' }]} />
+)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Prepend = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[
+        _tailwindStyles["mockId-1"],
+        styles.a,
+        {
+          backgroundColor: "pink",
+        },
+      ]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro array-style-prop-append.js: array-style-prop-append.js 1`] = `
+
+import tw from '../../macro'
+
+const Append = () => (
+  <View style={[styles.a, { backgroundColor: 'pink' }]} tw="px-8" />
+)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Append = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[
+        styles.a,
+        {
+          backgroundColor: "pink",
+        },
+        _tailwindStyles["mockId-1"],
+      ]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro conditional-style.js: conditional-style.js 1`] = `
+
+import tw from '../../macro'
+
+const Comp = () => (
+  <View
+    tw="pt-8"
+    style={[styles.a, isFocused ? tw\`bg-blue-400\` : tw\`bg-pink-500\`]}
+  />
+)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Comp = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[
+        _tailwindStyles["mockId-1"],
+        styles.a,
+        isFocused ? tw\`bg-blue-400\` : tw\`bg-pink-500\`,
+      ]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "pt-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro existing-data-set-prop.js: existing-data-set-prop.js 1`] = `
+
+import tw from "../../macro"
+
+const Comp = () => <View tw="px-8" dataSet={{ foo: "bar" }} />
+
+const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", media: "baz" }} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Comp = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={_tailwindStyles["mockId-1"]}
+      dataSet={{
+        foo: "bar",
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const Comp2 = () => {
+  const _tailwindStyles2 = _useStyles2()
+
+  return (
+    <View
+      style={_tailwindStyles2["mockId-2"]}
+      dataSet={{
+        foo: "bar",
+        media: _tailwindStyles2["mockId-2"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+const _useStyles2 = _createUseTailwindStyles2({
+  "mockId-2": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro object-style-prop.js: object-style-prop.js 1`] = `
+
+import tw from '../../macro'
+
+const Prepend = () => <View tw="px-8" style={{ backgroundColor: 'pink' }} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Prepend = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[
+        _tailwindStyles["mockId-1"],
+        {
+          backgroundColor: "pink",
+        },
+      ]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro object-style-prop-append.js: object-style-prop-append.js 1`] = `
+
+import tw from '../../macro'
+
+const Append = () => <View style={{ backgroundColor: 'pink' }} tw="px-8" />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Append = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[
+        {
+          backgroundColor: "pink",
+        },
+        _tailwindStyles["mockId-1"],
+      ]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro reference-style-prop.js: reference-style-prop.js 1`] = `
+
+import tw from '../../macro'
+
+const Prepend = () => <View tw="px-8" style={styles.a} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Prepend = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[_tailwindStyles["mockId-1"], styles.a]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro reference-style-prop-append.js: reference-style-prop-append.js 1`] = `
+
+import tw from '../../macro'
+
+const Append = () => <View style={styles.a} tw="px-8" />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Append = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={[styles.a, _tailwindStyles["mockId-1"]]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
 exports[`react-native-tailwind.macro single-prop.js: single-prop.js 1`] = `
 
 import tw from '../../macro'
@@ -8,7 +304,24 @@ const Comp = () => <View tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const Comp = () => <View tw="px-8" />
+import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+
+const Comp = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={_tailwindStyles["mockId-1"]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    />
+  )
+}
+
+const _useStyles = _createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
 
 
 `;
