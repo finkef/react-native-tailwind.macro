@@ -49,15 +49,13 @@ const macro = (params: MacroParams & { source: string }) => {
         component.scope.generateUid("useStyles")
 
       if (!component.state?.createStylesPath) {
-        component.state.createStylesIdentifier = program.scope.generateUid(
-          "createUseTailwindStyles"
-        )
-
         const [createStylesPath] = program.pushContainer(
           "body",
-          template("const %%useStyles%% = %%createStyles%%({})")({
+          template(
+            "const %%useStyles%% = %%import%%.createUseTailwindStyles({})"
+          )({
             useStyles: component.state.useStylesIdentifier,
-            createStyles: component.state.createStylesIdentifier,
+            import: program.state.importIdentifier,
           })
         )
 

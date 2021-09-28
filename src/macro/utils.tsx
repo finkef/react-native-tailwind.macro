@@ -135,17 +135,12 @@ function objectExpressionElements(
 export function addImport({ program, t, source }: HandlerParams<any>) {
   if (program.state?.didImport) return
 
-  const identifier = program.scope.generateUid("createUseTailwindStyleHook")
+  const identifier = program.scope.generateUid("ReactNativeTailwindMacro")
 
   program.unshiftContainer(
     "body",
     t.importDeclaration(
-      [
-        t.importSpecifier(
-          t.identifier(identifier),
-          t.identifier("createUseTailwindStyleHook")
-        ),
-      ],
+      [t.importNamespaceSpecifier(t.identifier(identifier))],
       t.stringLiteral(source + "/lib")
     )
   )
@@ -179,6 +174,9 @@ export function addStyleRule({
   return id
 }
 
+/**
+ * Moves the translated tw prop calls to the styles prop.
+ */
 export function moveTwPropToStyle({
   path,
   identifier,
@@ -257,10 +255,14 @@ export function moveTwPropToStyle({
   path.remove()
 }
 
+/**
+ * Adds the responsive ids to the dataSet media property.
+ */
 export function addResponsiveId({
   path,
   identifier,
   component,
+  program,
   t,
 }: HandlerParams<JSXElement> & {
   component: NodePath<Function>
@@ -312,12 +314,34 @@ export function addResponsiveId({
       )
 
     if (mediaProperty) {
-      // const value = mediaProperty.get("value")
+      const value = mediaProperty.get("value")
 
-      // TODO: Check if this is something along ["id", "id2"].join() and either add another arg or fully replace
-      // if (value.isCallExpression() && value.get(""))
+      if (
+        !value.isExpression() &&
+        !value.isJSXNamespacedName() &&
+        !value.isSpreadElement()
+      )
+        throw new MacroError("Cannot augment dataSet media property.")
 
-      mediaProperty.replaceWith(objectProperty)
+      value.replaceWith(
+        t.callExpression(
+          t.memberExpression(
+            t.identifier(program.state.importIdentifier),
+            t.identifier("joinResponsiveIds")
+          ),
+          [
+            value.node,
+            t.memberExpression(
+              t.memberExpression(
+                t.identifier(component.state.stylesIdentifier),
+                t.stringLiteral(identifier),
+                true
+              ),
+              t.identifier("id")
+            ),
+          ]
+        )
+      )
     } else expression.pushContainer("properties", objectProperty)
   }
 }

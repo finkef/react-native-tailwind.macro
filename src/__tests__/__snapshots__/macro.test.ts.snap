@@ -10,7 +10,7 @@ const Prepend = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -31,7 +31,7 @@ const Prepend = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -48,7 +48,7 @@ const Append = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -69,7 +69,7 @@ const Append = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -89,7 +89,7 @@ const Comp = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()
@@ -108,7 +108,7 @@ const Comp = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "pt-8",
 })
 
@@ -125,7 +125,7 @@ const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", media: "baz" }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()
@@ -149,17 +149,20 @@ const Comp2 = () => {
       style={_tailwindStyles2["mockId-2"]}
       dataSet={{
         foo: "bar",
-        media: _tailwindStyles2["mockId-2"].id,
+        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+          "baz",
+          _tailwindStyles2["mockId-2"].id
+        ),
       }}
     />
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
-const _useStyles2 = _createUseTailwindStyles2({
+const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": "px-8",
 })
 
@@ -174,7 +177,7 @@ const Prepend = () => <View tw="px-8" style={{ backgroundColor: 'pink' }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -194,7 +197,7 @@ const Prepend = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -209,7 +212,7 @@ const Append = () => <View style={{ backgroundColor: 'pink' }} tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -229,7 +232,7 @@ const Append = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -244,7 +247,7 @@ const Prepend = () => <View tw="px-8" style={styles.a} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -259,7 +262,7 @@ const Prepend = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -274,7 +277,7 @@ const Append = () => <View style={styles.a} tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -289,7 +292,7 @@ const Append = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
@@ -304,7 +307,7 @@ const Comp = () => <View tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createUseTailwindStyleHook as _createUseTailwindStyleHook } from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()
@@ -319,7 +322,7 @@ const Comp = () => {
   )
 }
 
-const _useStyles = _createUseTailwindStyles({
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": "px-8",
 })
 
