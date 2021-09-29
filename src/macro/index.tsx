@@ -12,9 +12,9 @@ const macro = (params: MacroParams & { source: string }) => {
     babel: { types: t },
   } = params
 
-  // const { default: tw = [] } = references
-
   const program = state.file.path
+
+  addImport({ ...params, t, path: program, program })
 
   /**
    * Traverse and collect all tw props on the surrounding component function in a first run.
@@ -37,11 +37,6 @@ const macro = (params: MacroParams & { source: string }) => {
         t,
         program,
       })
-
-      /**
-       * Imports createUseTailwindStylesHook.
-       */
-      addImport({ ...params, path, t, program })
 
       component.state.stylesIdentifier =
         component.scope.generateUid("tailwindStyles")
