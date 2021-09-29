@@ -1,13 +1,18 @@
 import { createMacro, MacroHandler, MacroParams } from "babel-plugin-macros"
 import type { NodePath } from "@babel/core"
 import type { JSXAttribute, ObjectExpression } from "@babel/types"
-import template from "@babel/template"
-import { addImport, findParentComponent } from "./utils"
+import {
+  addCreateUseTailwindStyles,
+  addImport,
+  addUseStylesCall,
+  findParentFunction,
+} from "./utils"
 import { handleTwProp } from "./handle-tw-prop"
+import { handleHook } from "./handle-hook"
 
 const macro = (params: MacroParams & { source: string }) => {
   const {
-    // references,
+    references: { useTailwindStyles: useTailwindStylesReferences = [] },
     state,
     babel: { types: t },
   } = params
@@ -31,7 +36,7 @@ const macro = (params: MacroParams & { source: string }) => {
       // Nothing to do
       if (!twProp) return
 
-      const component = findParentComponent({
+      const component = findParentFunction({
         ...params,
         path,
         t,
@@ -44,15 +49,13 @@ const macro = (params: MacroParams & { source: string }) => {
         component.scope.generateUid("useStyles")
 
       if (!component.state?.createStylesPath) {
-        const [createStylesPath] = program.pushContainer(
-          "body",
-          template(
-            "const %%useStyles%% = %%import%%.createUseTailwindStyles({})"
-          )({
-            useStyles: component.state.useStylesIdentifier,
-            import: program.state.importIdentifier,
-          })
-        )
+        const createStylesPath = addCreateUseTailwindStyles({
+          ...params,
+          t,
+          program,
+          path,
+          identifier: component.state.useStylesIdentifier,
+        })
 
         component.state.createStylesPath = createStylesPath
       }
@@ -60,13 +63,14 @@ const macro = (params: MacroParams & { source: string }) => {
       const body = component.get("body")
 
       if (body.isBlockStatement()) {
-        const [useStyles] = body.unshiftContainer(
-          "body",
-          template("const %%styles%% = %%useStyles%%()")({
-            styles: component.state.stylesIdentifier,
-            useStyles: component.state.useStylesIdentifier,
-          })
-        )
+        const useStyles = addUseStylesCall({
+          ...params,
+          t,
+          program,
+          path: body,
+          identifier: component.state.stylesIdentifier,
+          useStylesIdentifier: component.state.useStylesIdentifier,
+        })
 
         component.state.useStylesPath = useStyles
       }
@@ -80,6 +84,10 @@ const macro = (params: MacroParams & { source: string }) => {
       handleTwProp({ ...params, path: twProp, t, program, component })
     },
   })
+
+  useTailwindStylesReferences.forEach((path) =>
+    handleHook({ ...params, path, program, t })
+  )
 
   program.scope.crawl()
 }

@@ -1,5 +1,6 @@
 import { MacroError } from "babel-plugin-macros"
 import parser from "@babel/parser"
+import template from "@babel/template"
 import { nanoid } from "nanoid/non-secure"
 import type {
   JSXElement,
@@ -9,6 +10,7 @@ import type {
   ObjectExpression,
   ObjectProperty,
   Expression,
+  BlockStatement,
 } from "@babel/types"
 import type { Node, NodePath } from "@babel/core"
 import type { HandlerParams } from "./types"
@@ -26,15 +28,13 @@ export function generateUniqueStyleIdentifier() {
 /**
  * Returns the enclosing function (aka component) or throws if none is found.
  */
-export function findParentComponent({
-  path,
-  t,
-  ...args
-}: HandlerParams<JSXElement>) {
+export function findParentFunction({ path, t, ...args }: HandlerParams) {
   const functionParent = path.getFunctionParent()
 
   if (!functionParent)
-    throw new MacroError(`You can only use "tw" inside function components.`)
+    throw new MacroError(
+      `You can only use "tw" and "useTailwindStyles" inside functions and function components.`
+    )
 
   if (!functionParent.state)
     functionParent.state = { twRules: [], hasHook: true }
@@ -49,7 +49,7 @@ export function findParentComponent({
 }
 
 /**
- * Converts an arrow function with body-less JSX return into a block statement with explicit return.
+ * Converts an arrow function with immediate return into a block statement with explicit return.
  */
 function convertImmediateJSXReturnToBlockStatement({
   path,
@@ -57,7 +57,7 @@ function convertImmediateJSXReturnToBlockStatement({
 }: HandlerParams<Function>) {
   const body = path.node.body
 
-  if (t.isJSXElement(body)) {
+  if (!t.isBlockStatement(body)) {
     path.set("body", t.blockStatement([t.returnStatement(body)]))
   }
 }
@@ -347,4 +347,38 @@ export function addResponsiveId({
       )
     } else expression.pushContainer("properties", objectProperty)
   }
+}
+
+export function addCreateUseTailwindStyles({
+  program,
+  identifier,
+}: HandlerParams & { identifier: string }) {
+  const [createStylesPath] = program.pushContainer(
+    "body",
+    template("const %%useStyles%% = %%import%%.createUseTailwindStyles({})")({
+      useStyles: identifier,
+      import: program.state.importIdentifier,
+    })
+  )
+
+  return createStylesPath
+}
+
+export function addUseStylesCall({
+  path,
+  identifier,
+  useStylesIdentifier,
+}: HandlerParams<BlockStatement> & {
+  identifier: string
+  useStylesIdentifier: string
+}) {
+  const [useStyles] = path.unshiftContainer(
+    "body",
+    template("const %%styles%% = %%useStyles%%()")({
+      styles: identifier,
+      useStyles: useStylesIdentifier,
+    })
+  )
+
+  return useStyles
 }

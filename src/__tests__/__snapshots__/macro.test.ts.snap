@@ -76,6 +76,60 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
 
 `;
 
+exports[`react-native-tailwind.macro component-with-hook.js: component-with-hook.js 1`] = `
+
+import { useTailwindStyles } from "../../macro"
+
+const Comp = () => {
+  const { box } = useTailwindStyles(
+    (tw) => ({ box: isFocused ? tw\`md:px-8\` : tw\`lg:pt-16\` }),
+    [isFocused]
+  )
+
+  return <View tw="bg-blue-500" style={box} dataSet={{ media: box.id }} />
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
+
+const Comp = () => {
+  const _styles = _useStyles2()
+
+  const _tailwindStyles = _useStyles()
+
+  const { box } = _ReactNativeTailwindMacro.useTailwindStyles(
+    (tw) => ({
+      box: isFocused ? _styles["mockId-2"] : _styles["mockId-3"],
+    }),
+    [isFocused]
+  )
+
+  return (
+    <View
+      style={[_tailwindStyles["mockId-1"], box]}
+      dataSet={{
+        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+          box.id,
+          _tailwindStyles["mockId-1"].id
+        ),
+      }}
+    />
+  )
+}
+
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-1": "bg-blue-500",
+})
+
+const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-2": "md:px-8",
+  "mockId-3": "lg:pt-16",
+})
+
+
+`;
+
 exports[`react-native-tailwind.macro conditional-style.js: conditional-style.js 1`] = `
 
 import tw from '../../macro'
@@ -164,6 +218,84 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
 
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro hook.js: hook.js 1`] = `
+
+import { useTailwindStyles } from "../../macro"
+
+const Comp = () => {
+  const [isFocused] = useState(false)
+
+  const styles = useTailwindStyles(
+    (tw) => ({
+      box: isFocused ? tw\`px-8\` : tw\`px-16\`,
+    }),
+    [isFocused]
+  )
+
+  return <View style={styles.box} />
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
+
+const Comp = () => {
+  const _styles = _useStyles()
+
+  const [isFocused] = useState(false)
+
+  const styles = _ReactNativeTailwindMacro.useTailwindStyles(
+    (tw) => ({
+      box: isFocused ? _styles["mockId-1"] : _styles["mockId-2"],
+    }),
+    [isFocused]
+  )
+
+  return <View style={styles.box} />
+}
+
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-1": "px-8",
+  "mockId-2": "px-16",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro immediate-hook-return.js: immediate-hook-return.js 1`] = `
+
+import { useTailwindStyles } from "../../macro"
+
+const useMyCustomHook = () =>
+  useTailwindStyles(
+    (tw) => ({
+      box: tw\`px-8\`,
+    }),
+    []
+  )
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
+
+const useMyCustomHook = () => {
+  const _styles = _useStyles()
+
+  return _ReactNativeTailwindMacro.useTailwindStyles(
+    (tw) => ({
+      box: _styles["mockId-1"],
+    }),
+    []
+  )
+}
+
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-1": "px-8",
 })
 
 
@@ -290,6 +422,45 @@ const Append = () => {
       }}
     />
   )
+}
+
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-1": "px-8",
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro reuse-hook.js: reuse-hook.js 1`] = `
+
+import { useTailwindStyles } from "../../macro"
+
+const useMyCustomHook = () => {
+  const styles = useTailwindStyles(
+    (tw) => ({
+      box: tw\`px-8\`,
+    }),
+    []
+  )
+
+  return styles
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/lib"
+
+const useMyCustomHook = () => {
+  const _styles = _useStyles()
+
+  const styles = _ReactNativeTailwindMacro.useTailwindStyles(
+    (tw) => ({
+      box: _styles["mockId-1"],
+    }),
+    []
+  )
+
+  return styles
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
