@@ -9,7 +9,7 @@ export function handleTwProp(
     component: NodePath<Function>
   }
 ) {
-  const { path } = params
+  const { path, component } = params
 
   if (path.node.name.name !== "tw") return
 
@@ -22,6 +22,7 @@ export function handleTwProp(
 
   const styleIdentifier = addStyleRule({
     ...params,
+    createStylesPath: component.state.createStylesPath,
     style: nodeValue.node.value,
   })
 

@@ -6,6 +6,7 @@ import type {
   JSXOpeningElement,
   JSXAttribute,
   Function,
+  ObjectExpression,
   ObjectProperty,
   Expression,
 } from "@babel/types"
@@ -155,21 +156,23 @@ export function addImport({ program, t, source }: HandlerParams<any>) {
  * @returns Generated style identifier
  */
 export function addStyleRule({
-  component,
+  createStylesPath,
   style,
   t,
 }: HandlerParams<any> & {
-  component: NodePath<Function>
+  createStylesPath: NodePath<Node>
   style: string
 }) {
   const id = generateUniqueStyleIdentifier()
 
-  component.state.createStylesPath
-    .get("declarations.0.init.arguments.0")
-    .pushContainer(
-      "properties",
-      t.objectProperty(t.stringLiteral(id), t.stringLiteral(style))
-    )
+  const object = createStylesPath.get(
+    "declarations.0.init.arguments.0"
+  ) as NodePath<ObjectExpression>
+
+  object.pushContainer(
+    "properties",
+    t.objectProperty(t.stringLiteral(id), t.stringLiteral(style))
+  )
 
   return id
 }
