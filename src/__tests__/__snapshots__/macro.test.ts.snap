@@ -10,7 +10,7 @@ const Prepend = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -48,7 +48,7 @@ const Append = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -91,7 +91,7 @@ const Comp = () => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Comp = () => {
   const _styles = _useStyles2()
@@ -143,7 +143,7 @@ const Comp = () => (
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()
@@ -179,7 +179,7 @@ const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", media: "baz" }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()
@@ -242,7 +242,7 @@ const Comp = () => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Comp = () => {
   const _styles = _useStyles()
@@ -281,7 +281,7 @@ const useMyCustomHook = () =>
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const useMyCustomHook = () => {
   const _styles = _useStyles()
@@ -309,7 +309,7 @@ const Prepend = () => <View tw="px-8" style={{ backgroundColor: 'pink' }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -344,7 +344,7 @@ const Append = () => <View style={{ backgroundColor: 'pink' }} tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -379,7 +379,7 @@ const Prepend = () => <View tw="px-8" style={styles.a} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
@@ -409,7 +409,7 @@ const Append = () => <View style={styles.a} tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Append = () => {
   const _tailwindStyles = _useStyles()
@@ -448,7 +448,7 @@ const useMyCustomHook = () => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const useMyCustomHook = () => {
   const _styles = _useStyles()
@@ -478,7 +478,7 @@ const Comp = () => <View tw="px-8" />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import * as _ReactNativeTailwindMacro from "../../macro/lib"
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
 
 const Comp = () => {
   const _tailwindStyles = _useStyles()

@@ -142,7 +142,7 @@ export function addImport({ program, t, source }: HandlerParams<any>) {
     "body",
     t.importDeclaration(
       [t.importNamespaceSpecifier(t.identifier(identifier))],
-      t.stringLiteral(source + "/lib")
+      t.stringLiteral(source + "/exports")
     )
   )
 
