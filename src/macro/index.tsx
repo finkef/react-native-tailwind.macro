@@ -83,43 +83,6 @@ const macro = (params: MacroParams & { source: string }) => {
       component.state.useStylesArgumentPath = stylesObject
 
       handleTwProp({ ...params, path: twProp, t, program, component })
-
-      //   if (!styleProp) {
-      //     twProp.replaceWith(
-      //       t.jsxAttribute(
-      //         t.jsxIdentifier('style'),
-      //         t.jsxExpressionContainer(astify({ generated: 8 }, t))
-      //       )
-      //     )
-      //   } else {
-      //     const styleExpression = styleProp.node.value.expression
-
-      //     if (t.isArrayExpression(styleExpression)) {
-      //       if (appendTwStyles) {
-      //         styleExpression.elements.push(astify({ generated: 8 }, t))
-      //       } else {
-      //         styleExpression.elements.splice(0, 0, astify({ generated: 8 }, t))
-      //       }
-      //     } else {
-      //       const literal = styleExpression
-
-      //       styleProp.replaceWith(
-      //         t.jsxAttribute(
-      //           t.jsxIdentifier('style'),
-      //           t.jsxExpressionContainer(
-      //             t.arrayExpression(
-      //               appendTwStyles
-      //                 ? [literal, astify({ generated: 8 }, t)]
-      //                 : [astify({ generated: 8 }, t), literal]
-      //             )
-      //           )
-      //         )
-      //       )
-      // }
-
-      // Cleanup tw prop
-      //   twProp.remove()
-      //   }
     },
   })
 
