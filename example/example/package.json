@@ -5,11 +5,12 @@
   "private": true,
   "main": "index",
   "scripts": {
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "start": "expo start",
-    "test": "jest"
+    "android": "expo start --android --clear",
+    "ios": "expo start --ios --clear",
+    "web": "expo start --web --clear",
+    "start": "expo start --clear",
+    "test": "jest",
+    "clean": "rm -rf ./expo/web/cache"
   },
   "dependencies": {
     "expo": "^40.0.0",
@@ -23,6 +24,8 @@
   "devDependencies": {
     "@babel/core": "~7.12.10",
     "@babel/runtime": "^7.9.6",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "8.3.0",
     "expo-cli": "^4.0.13"

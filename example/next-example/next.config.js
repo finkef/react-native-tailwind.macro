@@ -3,7 +3,9 @@
 const { withExpo } = require("@expo/next-adapter")
 const withPlugins = require("next-compose-plugins")
 
-const withTM = require("next-transpile-modules")([])
+const withTM = require("next-transpile-modules")([
+  "react-native-tailwind.macro",
+])
 
 module.exports = withPlugins([
   withTM({

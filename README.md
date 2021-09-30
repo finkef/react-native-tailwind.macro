@@ -5,18 +5,12 @@ Babel macro for writing tailwind styles in React Native (+Web)
 ## Installation
 
 ```sh
-npm install react-native-tailwind.macro
+yarn add react-native-tailwind.macro
 ```
 
 ## Usage
 
-```js
-import TailwindMacro from "react-native-tailwind.macro";
-
-// ...
-
-const result = await TailwindMacro.multiply(3, 7);
-```
+TODO
 
 ## Contributing
 

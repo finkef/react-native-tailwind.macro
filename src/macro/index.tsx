@@ -1,6 +1,6 @@
 import { createMacro, MacroHandler, MacroParams } from "babel-plugin-macros"
-import type { NodePath } from "@babel/core"
-import type { JSXAttribute, ObjectExpression } from "@babel/types"
+import { NodePath } from "@babel/core"
+import { JSXAttribute, ObjectExpression } from "@babel/types"
 import {
   addCreateUseTailwindStyles,
   addImport,

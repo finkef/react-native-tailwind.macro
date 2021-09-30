@@ -2,11 +2,15 @@
   "name": "react-native-tailwind.macro",
   "version": "0.1.0",
   "description": "Babel macro for writing tailwind styles in React Native (+Web)",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "main": "lib/commonjs",
+  "module": "lib/module",
   "types": "lib/typescript/index.d.ts",
-  "react-native": "src/index",
-  "source": "src/index",
+  "react-native": "src",
+  "source": "src",
+  "exports": {
+    "./exports": "./lib/commonjs/exports.js",
+    "./package.json": "./package.json"
+  },
   "files": [
     "src",
     "lib",
@@ -27,9 +31,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "pods": "cd example/example && pod-install --quiet",
+    "bootstrap": "yarn && yarn link && yarn --cwd example/example && yarn link react-native-tailwind.macro --cwd example/example && yarn --cwd example/next-example && yarn link react-native-tailwind.macro --cwd example/next-example && yarn pods"
   },
   "keywords": [
     "react-native",
