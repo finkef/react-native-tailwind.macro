@@ -1,7 +1,7 @@
-import type { StyleObjectProps, PlatformProps, MediaProps } from './types'
+import type { StyleObjectProps, PlatformProps, MediaProps } from "./types"
 
-import tailwind from 'tailwind-rn'
-import { Platform } from 'react-native'
+import tailwind from "tailwind-rn"
+import { Platform } from "react-native"
 
 // let input = "xl:pt-16 ios:android:md:pt-8 ios:2xl:(pt-8 bg-blue-500 w-32) web:(pt-16)"
 
@@ -13,10 +13,10 @@ export function convert(input: string) {
 
   partedInput.map((twStyle) => {
     //Check if nested
-    let isNested = twStyle.includes('(')
-    let hasOptions = twStyle.includes(':')
+    let isNested = twStyle.includes("(")
+    let hasOptions = twStyle.includes(":")
     //Split input into peaces
-    let splitInput = twStyle.split(':')
+    let splitInput = twStyle.split(":")
     //If a specific size or platform command is fount
     let specificPlatform = false
     let specificMedia = false
@@ -35,96 +35,96 @@ export function convert(input: string) {
       xl: false,
       xxl: false,
     }
-    let dark = false;
+    let dark = false
     //Find if it is a nested twCommand
     //Maps trough platform and media queries
     if (isNested && platforms !== null) {
       splitInput
-        .filter((inputs) => !inputs.includes('('))
+        .filter((inputs) => !inputs.includes("("))
         .map((el) => {
           switch (el) {
-            case 'ios':
-            case 'android':
-            case 'web':
+            case "ios":
+            case "android":
+            case "web":
               platforms[el] = true
               specificPlatform = true
               break
-            case 'sm':
+            case "sm":
               media[el] = true
               specificMedia = true
               break
-            case 'md':
+            case "md":
               media.md = true
               specificMedia = true
               break
-            case 'lg':
+            case "lg":
               media.lg = true
               specificMedia = true
               break
-            case 'xl':
+            case "xl":
               media.xl = true
               specificMedia = true
               break
-            case '2xl':
+            case "2xl":
               media.xxl = true
               specificMedia = true
-              break;
+              break
             case "dark":
               dark = true
-              break;
+              break
           }
         })
     } else if (hasOptions) {
       splitInput
-        .filter((inputs) => !inputs.includes('('))
+        .filter((inputs) => !inputs.includes("("))
         .map((el) => {
           switch (el) {
-            case 'ios':
-            case 'android':
+            case "ios":
+            case "android":
               platforms[el] = true
               specificPlatform = true
               break
-            case 'sm':
+            case "sm":
               media[el] = true
               specificMedia = true
               break
-            case 'md':
+            case "md":
               media.md = true
               specificMedia = true
               break
-            case 'lg':
+            case "lg":
               media.lg = true
               specificMedia = true
               break
-            case 'xl':
+            case "xl":
               media.xl = true
               specificMedia = true
               break
-            case '2xl':
+            case "2xl":
               media.xxl = true
               specificMedia = true
               break
             case "dark":
               dark = true
-              break;
+              break
           }
         })
     }
 
     if (isNested) {
       //Find the tw commands in brakets
-      let styles = splitInput.filter((inputs) => inputs.includes('('))
+      let styles = splitInput.filter((inputs) => inputs.includes("("))
       //Map over styles in brakets and put styling in there
       styles[0]
-        .replace('(', '')
-        .replace(')', '')
-        .split(' ')
+        .replace("(", "")
+        .replace(")", "")
+        .split(" ")
         .map((style) => {
           let styling: StyleObjectProps = {
             platforms: specificPlatform ? platforms : null,
             media: specificMedia ? media : null,
             style: tailwind(style),
-            dark:dark,
+            dark: dark,
           }
           compStyles.push(styling)
         })
@@ -134,10 +134,10 @@ export function convert(input: string) {
         media: specificMedia ? media : null,
         style: tailwind(
           hasOptions
-            ? twStyle.split(':')[twStyle.split(':').length - 1]
+            ? twStyle.split(":")[twStyle.split(":").length - 1]
             : twStyle
         ),
-        dark:dark
+        dark: dark,
       }
       compStyles.push(styling)
     }
@@ -152,7 +152,7 @@ export function convert(input: string) {
       .filter(([_key, value]) => value)
       .map(([key]) => key)
     mediaKey.sort()
-    return [...platformKey, ...mediaKey].join('_')
+    return [...platformKey, ...mediaKey].join("_")
   }
 
   //Compress doubled styles to one style object
@@ -188,13 +188,13 @@ export function convert(input: string) {
   //connect the size integer with the whole object
   let orderObj: Record<string, StyleObjectProps> = {}
   sizeNumber.map((index, i) => {
-    orderObj[index + '_' + i] = container[i]
+    orderObj[index + "_" + i] = container[i]
   })
 
   //Order the Object by its keys
   let platformOrdered = Object.keys(orderObj)
     .sort((fir, sec) => {
-      return parseInt(fir.split('_')[0], 10) - parseInt(sec.split('_')[0], 10)
+      return parseInt(fir.split("_")[0], 10) - parseInt(sec.split("_")[0], 10)
     })
     .map((key) => orderObj[key])
 
