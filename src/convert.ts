@@ -35,6 +35,7 @@ export function convert(input: string) {
       xl: false,
       xxl: false,
     }
+    let dark = false;
     //Find if it is a nested twCommand
     //Maps trough platform and media queries
     if (isNested && platforms !== null) {
@@ -67,7 +68,10 @@ export function convert(input: string) {
             case '2xl':
               media.xxl = true
               specificMedia = true
-              break
+              break;
+            case "dark":
+              dark = true
+              break;
           }
         })
     } else if (hasOptions) {
@@ -100,6 +104,9 @@ export function convert(input: string) {
               media.xxl = true
               specificMedia = true
               break
+            case "dark":
+              dark = true
+              break;
           }
         })
     }
@@ -117,6 +124,7 @@ export function convert(input: string) {
             platforms: specificPlatform ? platforms : null,
             media: specificMedia ? media : null,
             style: tailwind(style),
+            dark:dark,
           }
           compStyles.push(styling)
         })
@@ -129,6 +137,7 @@ export function convert(input: string) {
             ? twStyle.split(':')[twStyle.split(':').length - 1]
             : twStyle
         ),
+        dark:dark
       }
       compStyles.push(styling)
     }

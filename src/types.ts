@@ -22,4 +22,5 @@ export interface StyleObjectProps {
   platforms: PlatformProps | null
   media: MediaProps | null
   style: Record<string, any>
+  dark:boolean
 }

@@ -67,6 +67,7 @@
     "glob-all": "^3.2.1",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "jest-react-native": "^18.0.0",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "16.13.1",
@@ -80,6 +81,7 @@
     "react-native": "*"
   },
   "jest": {
+    "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/",
@@ -132,8 +134,7 @@
           "useTabs": false,
           "semi": false
         }
-      ],
-      "react-native/no-inline-styles": "off"
+      ]
     }
   },
   "eslintIgnore": [
