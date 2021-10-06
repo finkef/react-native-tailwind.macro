@@ -1,4 +1,5 @@
-import { convert, checkPlatform } from "../convert"
+import { convert } from "../macro/convert"
+import { checkPlatform } from "../check-platform"
 
 const mock = jest.fn(() => "android")
 

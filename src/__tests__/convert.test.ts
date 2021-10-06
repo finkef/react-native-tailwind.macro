@@ -1,4 +1,4 @@
-import { convert } from "../convert"
+import { convert } from "../macro/convert"
 
 test("basic convert", () => {
   expect(convert("pt-8")).toStrictEqual([

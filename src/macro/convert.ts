@@ -1,9 +1,6 @@
-import type { StyleObjectProps, PlatformProps, MediaProps } from "./types"
+import type { StyleObjectProps, PlatformProps, MediaProps } from "../types"
 
 import tailwind from "tailwind-rn"
-import { Platform } from "react-native"
-
-// let input = "xl:pt-16 ios:android:md:pt-8 ios:2xl:(pt-8 bg-blue-500 w-32) web:(pt-16)"
 
 //Regex for spliting with spaces but not in parentherses
 //https://stackoverflow.com/questions/41075573/split-string-by-all-spaces-except-those-in-parentheses
@@ -214,10 +211,4 @@ export function convert(input: string) {
     }
   })
   return withQueries
-}
-
-export function checkPlatform(styles: StyleObjectProps[]) {
-  return styles.filter(
-    (style) => style.platforms === null || style.platforms[Platform.OS]
-  )
 }
