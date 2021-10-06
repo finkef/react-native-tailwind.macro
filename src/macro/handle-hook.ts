@@ -72,6 +72,20 @@ export function handleHook(params: HandlerParams<Node>) {
     useStylesIdentifier,
   })
 
+  // Add styles to dependency array
+  if (args.length < 2) {
+    arrowFunc.insertAfter(t.arrayExpression([t.identifier(stylesIdentifier)]))
+  } else {
+    const deps = args[1]
+
+    if (!deps.isArrayExpression())
+      throw new MacroError(
+        `useTailwindStyles expects an inline array expression of dependencies as second argument.`
+      )
+
+    deps.unshiftContainer("elements", t.identifier(stylesIdentifier))
+  }
+
   /* eslint-disable-next-line no-shadow */
   references.forEach((path) => {
     const taggedTemplate = path.parentPath
