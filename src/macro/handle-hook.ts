@@ -74,7 +74,10 @@ export function handleHook(params: HandlerParams<Node>) {
 
   // Add styles to dependency array
   if (args.length < 2) {
-    arrowFunc.insertAfter(t.arrayExpression([t.identifier(stylesIdentifier)]))
+    parent.pushContainer(
+      "arguments",
+      t.arrayExpression([t.identifier(stylesIdentifier)])
+    )
   } else {
     const deps = args[1]
 

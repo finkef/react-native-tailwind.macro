@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`react-native-tailwind.macro any-import.js: any-import.js 1`] = `
+
+import { NotExistent } from "../../macro"
+
+NotExistent
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
+_ReactNativeTailwindMacro.NotExistent
+
+
+`;
+
 exports[`react-native-tailwind.macro array-style-prop.js: array-style-prop.js 1`] = `
 
 import tw from '../../macro'
@@ -32,7 +46,17 @@ const Prepend = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -70,7 +94,17 @@ const Append = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -119,12 +153,56 @@ const Comp = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "bg-blue-500",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        backgroundColor: "rgba(59, 130, 246, 1)",
+      },
+      dark: false,
+    },
+  ],
 })
 
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-2": "md:px-8",
-  "mockId-3": "lg:pt-16",
+  "mockId-2": [
+    {
+      platforms: null,
+      media: {
+        sm: false,
+        md: true,
+        lg: false,
+        xl: false,
+        xxl: false,
+      },
+      style: {
+        "@media(min-width: 768px)": {
+          paddingLeft: 32,
+          paddingRight: 32,
+        },
+      },
+      dark: false,
+    },
+  ],
+  "mockId-3": [
+    {
+      platforms: null,
+      media: {
+        sm: false,
+        md: false,
+        lg: true,
+        xl: false,
+        xxl: false,
+      },
+      style: {
+        "@media(min-width: 1024px)": {
+          paddingTop: 64,
+        },
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -163,7 +241,16 @@ const Comp = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "pt-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingTop: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -213,12 +300,47 @@ const Comp2 = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-2": "px-8",
+  "mockId-2": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
+
+
+`;
+
+exports[`react-native-tailwind.macro flush-import.js: flush-import.js 1`] = `
+
+import { flush } from "../../macro"
+
+flush()
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
+
+_ReactNativeTailwindMacro.flush()
 
 
 `;
@@ -260,8 +382,28 @@ const Comp = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
-  "mockId-2": "px-16",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
+  "mockId-2": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 64,
+        paddingRight: 64,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -287,22 +429,27 @@ const Comp = () => {
   const _styles = _useStyles()
 
   const styles = _ReactNativeTailwindMacro.useTailwindStyles(
-    ((_temp = (tw) => {
-      var _temp
-
-      return {
-        box: _styles["mockId-1"],
-      }
+    (tw) => ({
+      box: _styles["mockId-1"],
     }),
-    [_styles],
-    _temp)
+    [_styles]
   )
 
   return <View style={styles.box} />
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -336,7 +483,111 @@ const useMyCustomHook = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
+})
+
+
+`;
+
+exports[`react-native-tailwind.macro multiple-usages.js: multiple-usages.js 1`] = `
+
+import tw from "../../macro"
+
+const Comp = () => (
+  <View tw="bg-blue-500 md:bg-pink-500">
+    <Text tw="font-bold md:font-thin">Hello</Text>
+  </View>
+)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
+
+const Comp = () => {
+  const _tailwindStyles = _useStyles()
+
+  return (
+    <View
+      style={_tailwindStyles["mockId-1"]}
+      dataSet={{
+        media: _tailwindStyles["mockId-1"].id,
+      }}
+    >
+      <Text
+        style={_tailwindStyles["mockId-2"]}
+        dataSet={{
+          media: _tailwindStyles["mockId-2"].id,
+        }}
+      >
+        Hello
+      </Text>
+    </View>
+  )
+}
+
+const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        backgroundColor: "rgba(59, 130, 246, 1)",
+      },
+      dark: false,
+    },
+    {
+      platforms: null,
+      media: {
+        sm: false,
+        md: true,
+        lg: false,
+        xl: false,
+        xxl: false,
+      },
+      style: {
+        "@media(min-width: 768px)": {
+          backgroundColor: "rgba(236, 72, 153, 1)",
+        },
+      },
+      dark: false,
+    },
+  ],
+  "mockId-2": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        fontWeight: "700",
+      },
+      dark: false,
+    },
+    {
+      platforms: null,
+      media: {
+        sm: false,
+        md: true,
+        lg: false,
+        xl: false,
+        xxl: false,
+      },
+      style: {
+        "@media(min-width: 768px)": {
+          fontWeight: "100",
+        },
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -371,7 +622,17 @@ const Prepend = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -406,7 +667,17 @@ const Append = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -436,7 +707,17 @@ const Prepend = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -466,7 +747,17 @@ const Append = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -505,7 +796,17 @@ const useMyCustomHook = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 
@@ -535,7 +836,17 @@ const Comp = () => {
 }
 
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
-  "mockId-1": "px-8",
+  "mockId-1": [
+    {
+      platforms: null,
+      media: null,
+      style: {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
+      dark: false,
+    },
+  ],
 })
 
 

@@ -11,9 +11,15 @@ import type {
   ObjectProperty,
   Expression,
   BlockStatement,
+  UnaryExpression,
+  NumericLiteral,
+  BooleanLiteral,
+  StringLiteral,
+  ArrayExpression,
 } from "@babel/types"
 import type { Node, NodePath } from "@babel/core"
 import type { HandlerParams } from "./types"
+import { convert } from "./convert"
 
 const SPREAD_ID = "__spread__"
 const COMPUTED_ID = "__computed__"
@@ -66,7 +72,17 @@ function convertImmediateJSXReturnToBlockStatement({
  * Convert plain js into babel ast
  * Credits: https://github.com/ben-rogerson/twin.macro/blob/master/src/macroHelpers.js#L75
  */
-export function astify(literal: any, t: HandlerParams["t"]): Node {
+export function astify(
+  literal: any,
+  t: HandlerParams["t"]
+):
+  | UnaryExpression
+  | NumericLiteral
+  | BooleanLiteral
+  | StringLiteral
+  | Expression
+  | ArrayExpression
+  | ObjectExpression {
   if (literal === null) {
     return t.nullLiteral()
   }
@@ -171,7 +187,7 @@ export function addStyleRule({
 
   object.pushContainer(
     "properties",
-    t.objectProperty(t.stringLiteral(id), t.stringLiteral(style))
+    t.objectProperty(t.stringLiteral(id), astify(convert(style), t))
   )
 
   return id

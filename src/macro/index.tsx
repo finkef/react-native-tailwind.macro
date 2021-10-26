@@ -9,10 +9,16 @@ import {
 } from "./utils"
 import { handleTwProp } from "./handle-tw-prop"
 import { handleHook } from "./handle-hook"
+import { handleLibImport } from "./handle-lib-import"
 
 const macro = (params: MacroParams & { source: string }) => {
   const {
-    references: { useTailwindStyles: useTailwindStylesReferences = [] },
+    references: {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      default: _default,
+      useTailwindStyles: useTailwindStylesReferences = [],
+      ...libImports
+    },
     state,
     babel: { types: t },
   } = params
@@ -43,10 +49,13 @@ const macro = (params: MacroParams & { source: string }) => {
         program,
       })
 
-      component.state.stylesIdentifier =
-        component.scope.generateUid("tailwindStyles")
-      component.state.useStylesIdentifier =
-        component.scope.generateUid("useStyles")
+      if (!component.state.stylesIdentifier)
+        component.state.stylesIdentifier =
+          component.scope.generateUid("tailwindStyles")
+
+      if (!component.state.useStylesIdentifier)
+        component.state.useStylesIdentifier =
+          component.scope.generateUid("useStyles")
 
       if (!component.state?.createStylesPath) {
         const createStylesPath = addCreateUseTailwindStyles({
@@ -62,7 +71,7 @@ const macro = (params: MacroParams & { source: string }) => {
 
       const body = component.get("body")
 
-      if (body.isBlockStatement()) {
+      if (body.isBlockStatement() && !component.state.useStylesPath) {
         const useStyles = addUseStylesCall({
           ...params,
           t,
@@ -88,6 +97,10 @@ const macro = (params: MacroParams & { source: string }) => {
   useTailwindStylesReferences.forEach((path) =>
     handleHook({ ...params, path, program, t })
   )
+
+  Object.values(libImports)
+    .flat()
+    .forEach((path) => handleLibImport({ ...params, path, program, t }))
 
   program.scope.crawl()
 }
