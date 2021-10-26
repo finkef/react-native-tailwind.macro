@@ -6,10 +6,10 @@ export default function App() {
   return (
     <View
       // @ts-ignore
-      tw="bg-blue-500"
+      tw="bg-blue-500 md:bg-pink-500"
       style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
     >
-      <Text>Welcome to React Native</Text>
+      <Text tw="font-bold md:font-thin">Welcome to React Native</Text>
     </View>
   )
 }

@@ -2,8 +2,8 @@
 // and https://github.com/expo/expo-cli/blob/master/packages/webpack-config/web-default/index.html
 import NextDocument, { Head, Main, NextScript } from "next/document"
 import * as React from "react"
-
 import { AppRegistry } from "react-native"
+import { flush } from "react-native-tailwind.macro"
 
 export const style = `
 /**
@@ -55,6 +55,7 @@ export async function getInitialProps({ renderPage }) {
       dangerouslySetInnerHTML={{ __html: style }}
     />,
     getStyleElement(),
+    flush(),
   ]
   return { ...page, styles: React.Children.toArray(styles) }
 }
