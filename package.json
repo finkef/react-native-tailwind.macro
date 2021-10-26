@@ -4,8 +4,7 @@
   "description": "Babel macro for writing tailwind styles in React Native (+Web)",
   "main": "lib/commonjs",
   "module": "lib/module",
-  "types": "lib/typescript/index.d.ts",
-  "react-native": "src",
+  "types": "types.d.ts",
   "source": "src",
   "exports": {
     "./exports": "./lib/commonjs/exports.js",
