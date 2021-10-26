@@ -17,6 +17,7 @@ module.exports = function (api) {
               __dirname,
               "../../src/exports.ts"
             ),
+            ["react-native"]: path.join(__dirname, "node_modules/react-native"),
           },
         },
       ],
