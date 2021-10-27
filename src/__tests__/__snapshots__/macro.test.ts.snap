@@ -683,6 +683,20 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
 
 `;
 
+exports[`react-native-tailwind.macro provider-import.js: provider-import.js 1`] = `
+
+import { TailwindProvider } from "../../macro"
+
+;<TailwindProvider />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as _ReactNativeTailwindMacro from "../../macro/exports"
+;<_ReactNativeTailwindMacro.TailwindProvider />
+
+
+`;
+
 exports[`react-native-tailwind.macro reference-style-prop.js: reference-style-prop.js 1`] = `
 
 import tw from '../../macro'

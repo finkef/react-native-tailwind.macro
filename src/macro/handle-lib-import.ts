@@ -18,10 +18,18 @@ export function handleLibImport(params: HandlerParams<Node>) {
     throw new MacroError(`Invalid import "${importName}"`)
 
   // Replace with imported version
-  path.replaceWith(
-    t.memberExpression(
-      t.identifier(program.state.importIdentifier),
-      t.identifier(importName)
+  if (path.isJSXIdentifier())
+    path.replaceWith(
+      t.jsxMemberExpression(
+        t.jsxIdentifier(program.state.importIdentifier),
+        t.jsxIdentifier(importName)
+      )
     )
-  )
+  else
+    path.replaceWith(
+      t.memberExpression(
+        t.identifier(program.state.importIdentifier),
+        t.identifier(importName)
+      )
+    )
 }
