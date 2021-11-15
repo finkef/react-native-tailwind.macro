@@ -1,5 +1,5 @@
 {
-  "name": "react-native-tailwind.macro",
+  "name": "react-native-tailwind.macro-monorepo",
   "private": true,
   "workspaces": [
     "packages/*",
