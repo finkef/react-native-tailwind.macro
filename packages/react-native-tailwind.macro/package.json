@@ -1,6 +1,6 @@
 {
   "name": "react-native-tailwind.macro",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Babel macro for writing Tailwind styles in React Native (+ Web)",
   "main": "dist/cjs",
   "module": "dist",
@@ -17,7 +17,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "release": "cp ../../README.md ./README.md && release-it",
+    "release": "release-it",
     "clean": "rimraf ./dist",
     "build": "yarn build:module && yarn build:commonjs",
     "build:module": "tsc -p tsconfig.module.json",
@@ -99,6 +99,16 @@
       "@release-it/conventional-changelog": {
         "preset": "angular"
       }
+    },
+    "hooks": {
+      "before:init": [
+        "yarn lint",
+        "yarn test"
+      ],
+      "after:bump": [
+        "yarn build",
+        "cp ../../README.md ./README.md"
+      ]
     }
   },
   "eslintConfig": {
