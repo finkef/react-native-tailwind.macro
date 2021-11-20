@@ -17,5 +17,29 @@
     "url": "https://github.com/finkef/react-native-tailwind.macro/issues"
   },
   "homepage": "https://github.com/finkef/react-native-tailwind.macro#readme",
-  "scripts": {}
+  "scripts": {
+    "release": "yarn workspace react-native-tailwind.macro release"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
+    "commitlint": "^11.0.0",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn workspace react-native-tailwind.macro lint && yarn workspace react-native-tailwind.macro typescript"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
