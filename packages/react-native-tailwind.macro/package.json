@@ -105,10 +105,9 @@
         "yarn lint",
         "yarn test"
       ],
-      "after:bump": [
-        "yarn build",
-        "cp ../../README.md ./README.md"
-      ]
+      "after:bump": "yarn build",
+      "before:npm:release": "cp ../../README.md ./README.md",
+      "after:npm:release": "git checkout @ -- ./README.md"
     }
   },
   "eslintConfig": {
