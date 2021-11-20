@@ -20,7 +20,7 @@ import type {
 } from "@babel/types"
 import type { Node, NodePath } from "@babel/core"
 import type { HandlerParams } from "./types"
-import { convert } from "./convert"
+import { transformStyles } from "./transform-styles"
 
 const SPREAD_ID = "__spread__"
 const COMPUTED_ID = "__computed__"
@@ -170,6 +170,7 @@ export function addStyleRule({
   createStylesPath,
   style,
   t,
+  program,
 }: HandlerParams<any> & {
   createStylesPath: NodePath<Node>
   style: string
@@ -182,7 +183,10 @@ export function addStyleRule({
 
   object.pushContainer(
     "properties",
-    t.objectProperty(t.stringLiteral(id), astify(convert(style), t))
+    t.objectProperty(
+      t.stringLiteral(id),
+      astify(transformStyles(style, program.state.tailwindConfig), t)
+    )
   )
 
   return id

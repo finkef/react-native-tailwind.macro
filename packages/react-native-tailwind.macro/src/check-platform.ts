@@ -1,8 +1,8 @@
-import type { StyleObjectProps } from "./types"
 import { Platform } from "react-native"
+import type { TailwindStyleRule } from "./types"
 
-export function checkPlatform(styles: StyleObjectProps[]) {
+export function checkPlatform(styles: TailwindStyleRule[]) {
   return styles.filter(
-    (style) => style.platforms === null || style.platforms[Platform.OS]
+    (style) => !style.platform || style.platform === Platform.OS
   )
 }

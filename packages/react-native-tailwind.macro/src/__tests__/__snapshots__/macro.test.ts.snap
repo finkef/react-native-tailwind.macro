@@ -48,13 +48,11 @@ const Prepend = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -96,13 +94,11 @@ const Append = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -155,12 +151,10 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
-      style: {
-        backgroundColor: "rgba(59, 130, 246, 1)",
-      },
       dark: false,
+      style: {
+        backgroundColor: "#3b82f6",
+      },
     },
   ],
 })
@@ -168,39 +162,25 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
-      platforms: null,
-      media: {
-        sm: false,
-        md: true,
-        lg: false,
-        xl: false,
-        xxl: false,
-      },
+      dark: false,
+      breakpoint: "md",
       style: {
         "@media(min-width: 768px)": {
           paddingLeft: 32,
           paddingRight: 32,
         },
       },
-      dark: false,
     },
   ],
   "mockId-3": [
     {
-      platforms: null,
-      media: {
-        sm: false,
-        md: false,
-        lg: true,
-        xl: false,
-        xxl: false,
-      },
+      dark: false,
+      breakpoint: "lg",
       style: {
         "@media(min-width: 1024px)": {
           paddingTop: 64,
         },
       },
-      dark: false,
     },
   ],
 })
@@ -243,12 +223,10 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingTop: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -302,13 +280,11 @@ const Comp2 = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -316,13 +292,11 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -384,24 +358,20 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
   "mockId-2": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 64,
         paddingRight: 64,
       },
-      dark: false,
     },
   ],
 })
@@ -441,13 +411,11 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -485,13 +453,11 @@ const useMyCustomHook = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -538,54 +504,36 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
-      style: {
-        backgroundColor: "rgba(59, 130, 246, 1)",
-      },
       dark: false,
+      style: {
+        backgroundColor: "#3b82f6",
+      },
     },
     {
-      platforms: null,
-      media: {
-        sm: false,
-        md: true,
-        lg: false,
-        xl: false,
-        xxl: false,
-      },
+      dark: false,
+      breakpoint: "md",
       style: {
         "@media(min-width: 768px)": {
-          backgroundColor: "rgba(236, 72, 153, 1)",
+          backgroundColor: "#ec4899",
         },
       },
-      dark: false,
     },
   ],
   "mockId-2": [
     {
-      platforms: null,
-      media: null,
-      style: {
-        fontWeight: "700",
-      },
       dark: false,
+      style: {
+        fontWeight: "bold",
+      },
     },
     {
-      platforms: null,
-      media: {
-        sm: false,
-        md: true,
-        lg: false,
-        xl: false,
-        xxl: false,
-      },
+      dark: false,
+      breakpoint: "md",
       style: {
         "@media(min-width: 768px)": {
           fontWeight: "100",
         },
       },
-      dark: false,
     },
   ],
 })
@@ -624,13 +572,11 @@ const Prepend = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -669,13 +615,11 @@ const Append = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -723,13 +667,11 @@ const Prepend = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -763,13 +705,11 @@ const Append = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -812,13 +752,11 @@ const useMyCustomHook = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })
@@ -852,13 +790,11 @@ const Comp = () => {
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
-      platforms: null,
-      media: null,
+      dark: false,
       style: {
         paddingLeft: 32,
         paddingRight: 32,
       },
-      dark: false,
     },
   ],
 })

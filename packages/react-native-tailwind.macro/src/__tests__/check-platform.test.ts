@@ -1,4 +1,4 @@
-import { convert } from "../macro/convert"
+import { transformStyles } from "../macro/transform-styles"
 import { checkPlatform } from "../check-platform"
 
 const mock = jest.fn(() => "android")
@@ -11,76 +11,83 @@ jest.mock("react-native", () => ({
   },
 }))
 
-test("checkPortal advanced ios ", () => {
+test("checkPlatform advanced ios ", () => {
   mock.mockImplementation(() => "ios")
   expect(
     checkPlatform(
-      convert(
-        "ios:(bg-blue-500 text-white) android:(bg-purple-500 text-red-900) p-8"
+      transformStyles(
+        "ios:(bg-blue-500 text-white) android:(bg-purple-500 text-red-900) p-8",
+        { darkMode: "media", theme: {} }
       )
     )
-  ).toStrictEqual([
-    {
-      platforms: {
-        ios: true,
-        android: false,
-        web: false,
-        macos: false,
-        windows: false,
+  ).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "breakpoint": undefined,
+        "dark": false,
+        "platform": undefined,
+        "style": Object {
+          "paddingBottom": 32,
+          "paddingLeft": 32,
+          "paddingRight": 32,
+          "paddingTop": 32,
+        },
       },
-      media: null,
-      dark: false,
-      style: {
-        backgroundColor: "rgba(59, 130, 246, 1)",
-        color: "rgba(255, 255, 255, 1)",
+      Object {
+        "breakpoint": undefined,
+        "dark": false,
+        "platform": "ios",
+        "style": Object {
+          "backgroundColor": "#3b82f6",
+          "color": "#fff",
+        },
       },
-    },
-    {
-      platforms: null,
-      media: null,
-      dark: false,
-      style: {
-        paddingBottom: 32,
-        paddingLeft: 32,
-        paddingRight: 32,
-        paddingTop: 32,
-      },
-    },
-  ])
+    ]
+  `)
 })
 
-test("checkPortal basic android", () => {
+test("checkPlatform basic android", () => {
   mock.mockImplementation(() => "android")
-  expect(checkPlatform(convert("android:pt-8 ios:pt-16"))).toStrictEqual([
-    {
-      platforms: {
-        ios: false,
-        android: true,
-        web: false,
-        macos: false,
-        windows: false,
+  expect(
+    checkPlatform(
+      transformStyles("android:pt-8 ios:pt-16", {
+        darkMode: "media",
+        theme: {},
+      })
+    )
+  ).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "breakpoint": undefined,
+        "dark": false,
+        "platform": "android",
+        "style": Object {
+          "paddingTop": 32,
+        },
       },
-      dark: false,
-      media: null,
-      style: { paddingTop: 32 },
-    },
-  ])
+    ]
+  `)
 })
 
-test("checkPortal basic ios", () => {
+test("checkPlatform basic ios", () => {
   mock.mockImplementation(() => "ios")
-  expect(checkPlatform(convert("android:pt-8 ios:pt-16"))).toStrictEqual([
-    {
-      platforms: {
-        ios: true,
-        android: false,
-        web: false,
-        macos: false,
-        windows: false,
+  expect(
+    checkPlatform(
+      transformStyles("android:pt-8 ios:pt-16", {
+        darkMode: "media",
+        theme: {},
+      })
+    )
+  ).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "breakpoint": undefined,
+        "dark": false,
+        "platform": "ios",
+        "style": Object {
+          "paddingTop": 64,
+        },
       },
-      media: null,
-      dark: false,
-      style: { paddingTop: 64 },
-    },
-  ])
+    ]
+  `)
 })

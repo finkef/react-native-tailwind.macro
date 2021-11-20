@@ -49,7 +49,7 @@
     "babel-plugin-macros": "^3.1.0",
     "nanoid": "^3.1.25",
     "react-native-media-query": "^1.0.9",
-    "tailwind-rn": "^3.0.1"
+    "twrnc": "2.1.0-beta.5"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
@@ -91,7 +91,8 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/src/__tests__/__fixtures__"
-    ]
+    ],
+    "resolver": "./jest-twrnc-resolver.js"
   },
   "husky": {
     "hooks": {

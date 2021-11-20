@@ -1,19 +1,16 @@
 import React, { useMemo } from "react"
 import MediaQueryStyleSheet from "react-native-media-query"
-import { StyleObjectProps } from "./types"
 import { checkPlatform } from "./check-platform"
 import { useTailwind } from "./tailwind-context"
+import { TailwindStyleRule } from "./types"
 
 export const createUseTailwindStyles = (
-  styles: Record<string, StyleObjectProps[]>
+  styles: Record<string, TailwindStyleRule[]>
 ) => {
   return () => {
     const ctx = useTailwind()
 
     return useMemo(() => {
-      console.log(styles)
-      console.log("Dark", ctx.dark)
-
       const { styles: styleSheet, ids } = MediaQueryStyleSheet.create(
         Object.fromEntries(
           Object.entries(styles).map(([key, arr]) => [
