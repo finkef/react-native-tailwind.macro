@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn
+      - name: tsc
+        run: yarn workspace react-native-tailwind.macro typescript
+      - name: lint
+        run: yarn workspace react-native-tailwind.macro lint
+      - name: test
+        run: yarn workspace react-native-tailwind.macro test
