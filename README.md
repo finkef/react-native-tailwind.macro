@@ -3,7 +3,11 @@
 ![npm version](https://img.shields.io/npm/v/react-native-tailwind.macro)
 ![github workflow status](https://img.shields.io/github/workflow/status/finkef/react-native-tailwind.macro/ci)
 
+![demo](images/demo.png)
+
 > Babel macro for easily writing responsive Tailwind styles in React Native (+ Web).
+
+---
 
 Easily style components using the `tw` prop:
 
