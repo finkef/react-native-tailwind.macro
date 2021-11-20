@@ -10,6 +10,7 @@ import {
 import { handleTwProp } from "./handle-tw-prop"
 import { handleHook } from "./handle-hook"
 import { handleLibImport } from "./handle-lib-import"
+import { resolveTailwindConfig } from "./resolve-tailwind-config"
 
 const macro = (params: MacroParams & { source: string }) => {
   const {
@@ -26,6 +27,10 @@ const macro = (params: MacroParams & { source: string }) => {
   const program = state.file.path
 
   addImport({ ...params, t, path: program, program })
+
+  program.state.tailwindConfig = resolveTailwindConfig(
+    state.file.opts.filename!
+  )
 
   /**
    * Traverse and collect all tw props on the surrounding component function in a first run.
