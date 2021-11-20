@@ -56,3 +56,6 @@ android/keystores/debug.keystore
 .expo/*
 
 dist/
+
+# Don't commit README and reuse from root
+README.md
