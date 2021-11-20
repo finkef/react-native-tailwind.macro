@@ -9,12 +9,9 @@ import "react-native-tailwind.macro"
 import { View, Text } from "react-native"
 
 const Badge = () => (
-  //                             Platform                     Dark Mode
-  //                                ∨                             ∨
   <View tw="px-3 py-0.5 rounded-xl ios:rounded-full bg-blue-100 dark:bg-blue-800">
     <Text tw="text-sm lg:text-lg font-medium text-blue-800">Badge</Text>
-  </View> //           ∧
-  //               Responsive
+  </View>
 )
 ```
 
@@ -337,7 +334,7 @@ For more examples and use cases, check the [macro test snapshots](packages/react
 
 ## Credits
 
-- [tailwind-react-native-classnames]("https://github.com/jaredh159/tailwind-react-native-classnames"): Used for compiling Tailwind styles
+- [tailwind-react-native-classnames](https://github.com/jaredh159/tailwind-react-native-classnames): Used for compiling Tailwind styles
 
 - [react-native-media-query](https://github.com/kasinskas/react-native-media-query): Used for applying responsive styles with CSS media queries on the web
 
