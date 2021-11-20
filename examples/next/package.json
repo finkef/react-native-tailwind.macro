@@ -9,18 +9,19 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-tailwind.macro": "*",
     "react-native-unimodules": "~0.12.0",
-    "react-native-web": "~0.14.10",
-    "react-native-tailwind.macro": "*"
+    "react-native-web": "~0.14.10"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@expo/next-adapter": "2.1.0",
-    "babel-plugin-macros": "^3.1.0"
+    "babel-plugin-macros": "^3.1.0",
+    "rimraf": "^3.0.2"
   },
   "scripts": {
-    "start": "yarn next dev",
-    "clean": "rm -rf .expo/web/cache && rm -rf .next/cache"
+    "start": "yarn clean && yarn next dev",
+    "clean": "rimraf .expo/web/cache"
   },
   "prettier": {
     "quoteProps": "consistent",

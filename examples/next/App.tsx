@@ -1,23 +1,49 @@
-import React from "react"
+import * as React from "react"
+
 import { View, Text } from "react-native"
-import { useTailwindStyles } from "react-native-tailwind.macro"
+import { TailwindProvider } from "react-native-tailwind.macro"
+import { Button } from "./components/Button"
 
-export default function App() {
-  const a = useTailwindStyles(
-    (tw) => ({
-      box: tw`bg-purple-500`,
-    }),
-    []
-  )
+interface AppProps {
+  toggleTheme: () => void
+}
 
+const App: React.FunctionComponent<AppProps> = ({ toggleTheme }) => {
   return (
-    <View
-      tw="bg-blue-500 md:bg-green-500"
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-    >
-      <Text tw="font-bold md:font-thin text-gray-900">
-        Welcome to React Native
+    <View tw="flex-1 items-center py-20 bg-white dark:bg-gray-900">
+      <Button label="Toggle Dark Mode" onPress={toggleTheme} />
+
+      <Text tw="mt-16 font-bold text-xl dark:text-white">Platforms</Text>
+      <Text tw="dark:text-white ios:(font-bold text-blue-500)">iOS</Text>
+      <Text tw="dark:text-white android:(font-bold text-blue-500)">
+        Android
+      </Text>
+      <Text tw="dark:text-white web:(font-bold text-blue-500)">Web</Text>
+      <Text tw="dark:text-white macos:(font-bold text-blue-500)">macOS</Text>
+      <Text tw="dark:text-white windows:(font-bold text-blue-500)">
+        Windows
+      </Text>
+
+      <Text tw="mt-16 font-bold text-xl dark:text-white">Breakpoints</Text>
+      <Text tw="dark:text-white xs:(font-bold text-blue-500)">xs</Text>
+      <Text tw="dark:text-white sm:(font-bold text-blue-500)">sm</Text>
+      <Text tw="dark:text-white md:(font-bold text-blue-500)">md</Text>
+      <Text tw="dark:text-white lg:(font-bold text-blue-500)">lg</Text>
+      <Text tw="dark:text-white xl:(font-bold text-blue-500)">xl</Text>
+
+      <Text tw="mt-8 text-custom">
+        Text using custom color from tailwind.config.js
       </Text>
     </View>
+  )
+}
+
+export default () => {
+  const [dark, setDark] = React.useState(false)
+
+  return (
+    <TailwindProvider dark={dark}>
+      <App toggleTheme={() => setDark((value) => !value)} />
+    </TailwindProvider>
   )
 }

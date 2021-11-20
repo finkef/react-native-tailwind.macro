@@ -1,29 +1,39 @@
 import * as React from "react"
 
-import { View, Text, TouchableOpacity } from "react-native"
-import {
-  useTailwindStyles,
-  TailwindProvider,
-} from "react-native-tailwind.macro"
+import { View, Text } from "react-native"
+import { TailwindProvider } from "react-native-tailwind.macro"
+import { Button } from "./Button"
 
 interface AppProps {
   toggleTheme: () => void
 }
 
 const App: React.FunctionComponent<AppProps> = ({ toggleTheme }) => {
-  const { box } = useTailwindStyles((tw) => {
-    return {
-      box: tw`flex-1 items-center bg-pink-500 dark:bg-pink-800 ios:my-20`,
-    }
-  })
-
   return (
-    <View style={box}>
-      <Text tw="font-bold text-blue-900 dark:text-blue-100">Result: 12</Text>
+    <View tw="flex-1 items-center py-20 bg-white dark:bg-gray-900">
+      <Button label="Toggle Dark Mode" onPress={toggleTheme} />
 
-      <TouchableOpacity tw="mt-8" onPress={toggleTheme}>
-        <Text tw="text-black dark:text-white">Toggle Theme</Text>
-      </TouchableOpacity>
+      <Text tw="mt-16 font-bold text-xl dark:text-white">Platforms</Text>
+      <Text tw="dark:text-white ios:(font-bold text-blue-500)">iOS</Text>
+      <Text tw="dark:text-white android:(font-bold text-blue-500)">
+        Android
+      </Text>
+      <Text tw="dark:text-white web:(font-bold text-blue-500)">Web</Text>
+      <Text tw="dark:text-white macos:(font-bold text-blue-500)">macOS</Text>
+      <Text tw="dark:text-white windows:(font-bold text-blue-500)">
+        Windows
+      </Text>
+
+      <Text tw="mt-16 font-bold text-xl dark:text-white">Breakpoints</Text>
+      <Text tw="dark:text-white xs:(font-bold text-blue-500)">xs</Text>
+      <Text tw="dark:text-white sm:(font-bold text-blue-500)">sm</Text>
+      <Text tw="dark:text-white md:(font-bold text-blue-500)">md</Text>
+      <Text tw="dark:text-white lg:(font-bold text-blue-500)">lg</Text>
+      <Text tw="dark:text-white xl:(font-bold text-blue-500)">xl</Text>
+
+      <Text tw="mt-8 text-custom">
+        Text using custom color from tailwind.config.js
+      </Text>
     </View>
   )
 }
