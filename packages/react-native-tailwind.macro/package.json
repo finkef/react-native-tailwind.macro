@@ -109,7 +109,10 @@
         "yarn lint",
         "yarn test"
       ],
-      "after:bump": "yarn build",
+      "after:bump": [
+        "yarn clean",
+        "yarn build"
+      ],
       "before:npm:release": "cp ../../README.md ./README.md",
       "after:npm:release": "git checkout @ -- ./README.md"
     }
