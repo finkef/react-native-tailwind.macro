@@ -1,6 +1,6 @@
 {
   "name": "react-native-tailwind.macro",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Babel macro for writing Tailwind styles in React Native (+ Web)",
   "main": "dist/cjs",
   "module": "dist",
@@ -24,7 +24,11 @@
     "build:commonjs": "tsc -p tsconfig.cjs.json"
   },
   "keywords": [
+    "babel-plugin-macros",
     "react-native",
+    "react-native-web",
+    "tailwind",
+    "tailwindcss",
     "ios",
     "android"
   ],
