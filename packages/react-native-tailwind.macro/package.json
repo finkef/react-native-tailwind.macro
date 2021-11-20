@@ -1,7 +1,7 @@
 {
   "name": "react-native-tailwind.macro",
   "version": "0.1.0",
-  "description": "Babel macro for writing tailwind styles in React Native (+Web)",
+  "description": "Babel macro for writing Tailwind styles in React Native (+ Web)",
   "main": "dist/cjs",
   "module": "dist",
   "source": "src",
@@ -34,13 +34,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/ticketbro/react-native-tailwind.macro",
-  "author": "Fabian Finke <fabian@ticketbro.io> (https://github.com/finkef)",
+  "repository": "https://github.com/finkef/react-native-tailwind.macro",
+  "author": "Fabian Finke <finkef@icloud.com> (https://github.com/finkef)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ticketbro/react-native-tailwind.macro/issues"
+    "url": "https://github.com/finkef/react-native-tailwind.macro/issues"
   },
-  "homepage": "https://github.com/ticketbro/react-native-tailwind.macro#readme",
+  "homepage": "https://github.com/finkef/react-native-tailwind.macro#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

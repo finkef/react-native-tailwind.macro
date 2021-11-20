@@ -1,14 +1,21 @@
 {
   "name": "react-native-tailwind.macro-monorepo",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ]
+  },
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
   "keywords": [],
-  "author": "Fabian Finke",
-  "license": "MIT"
+  "repository": "https://github.com/finkef/react-native-tailwind.macro",
+  "author": "Fabian Finke <finkef@icloud.com> (https://github.com/finkef)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/finkef/react-native-tailwind.macro/issues"
+  },
+  "homepage": "https://github.com/finkef/react-native-tailwind.macro#readme",
+  "scripts": {}
 }
