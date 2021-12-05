@@ -5,6 +5,27 @@ import { useMemo } from "react"
  * deps (including compiled styles) change.
  */
 export const useTailwindStyles = (fn: () => any, deps: any) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(fn, deps)
+  return useMemo(
+    () => {
+      const obj = fn()
+
+      Object.values(obj).forEach((styles) => {
+        // Iterate over all styles and add joined responsive ids
+        // as non-enumerable property for arrays
+        if (Array.isArray(styles)) {
+          Object.defineProperty(styles, "id", {
+            value: styles
+              .map((style: any) => style.id)
+              .filter(Boolean)
+              .join(" "),
+            enumerable: false,
+          })
+        }
+      })
+
+      return obj
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    deps
+  )
 }
