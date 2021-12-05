@@ -41,5 +41,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "eslint-plugin-flowtype": "8.0.3",
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "prettier": "2.5.1"
   }
 }

@@ -17,16 +17,17 @@ export interface TailwindProviderProps {
   dark?: boolean
 }
 
-export const TailwindProvider: React.FunctionComponent<TailwindProviderProps> =
-  ({ dark, children }) => {
-    // Memoize the context value to skip rerenders
-    const value = useMemo(
-      () => ({ ...DEFAULT_CONTEXT, dark: Boolean(dark) }),
-      [dark]
-    )
+export const TailwindProvider: React.FunctionComponent<
+  TailwindProviderProps
+> = ({ dark, children }) => {
+  // Memoize the context value to skip rerenders
+  const value = useMemo(
+    () => ({ ...DEFAULT_CONTEXT, dark: Boolean(dark) }),
+    [dark]
+  )
 
-    return <Context.Provider value={value}>{children}</Context.Provider>
-  }
+  return <Context.Provider value={value}>{children}</Context.Provider>
+}
 
 export const useTailwind = () => {
   const ctx = useContext(Context)
