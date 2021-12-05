@@ -1,6 +1,13 @@
-import { createMacro, MacroHandler, MacroParams } from "babel-plugin-macros"
+import {
+  createMacro,
+  MacroError,
+  MacroHandler,
+  MacroParams,
+} from "babel-plugin-macros"
 import { NodePath } from "@babel/core"
 import { JSXAttribute, ObjectExpression } from "@babel/types"
+import fs from "fs"
+import { resolve } from "path"
 import {
   addCreateUseTailwindStyles,
   addImport,
@@ -22,15 +29,24 @@ const macro = (params: MacroParams & { source: string }) => {
     },
     state,
     babel: { types: t },
+    config = {},
   } = params
 
   const program = state.file.path
 
   addImport({ ...params, t, path: program, program })
 
-  program.state.tailwindConfig = resolveTailwindConfig(
-    state.file.opts.filename!
+  // Resolve custom tailwind config
+  const sourceRoot = state.file.opts.sourceRoot ?? "."
+  const configPath = resolve(
+    sourceRoot,
+    config.config ?? "./tailwind.config.js"
   )
+  if (config.config && !fs.existsSync(configPath))
+    throw new MacroError(
+      `Couldn't find custom tailwind config at ${configPath}.`
+    )
+  program.state.tailwindConfig = resolveTailwindConfig(configPath)
 
   /**
    * Traverse and collect all tw props on the surrounding component function in a first run.
@@ -110,4 +126,6 @@ const macro = (params: MacroParams & { source: string }) => {
   program.scope.crawl()
 }
 
-export default createMacro(macro as MacroHandler)
+export default createMacro(macro as MacroHandler, {
+  configName: "reactNativeTailwind",
+})

@@ -30,5 +30,10 @@
     "trailingComma": "es5",
     "useTabs": false,
     "semi": false
+  },
+  "babelMacros": {
+    "reactNativeTailwind": {
+      "config": "./custom-tailwind-config-name.js"
+    }
   }
 }

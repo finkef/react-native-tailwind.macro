@@ -241,6 +241,42 @@ const App = () => {
 }
 ```
 
+### Macro Options
+
+You can apply options to the macro by adding a `babel-plugin-macros.config.js` or specifying them in your `package.json` like below:
+
+```js
+// babel-plugin-macros.config.js
+module.exports = {
+  reactNativeTailwind: {
+    // your options
+  },
+}
+```
+
+Alternatively:
+
+```js
+// package.json
+{
+  //...
+  "babelMacros": {
+    "reactNativeTailwind": {
+      // your options
+    }
+  }
+}
+```
+
+<details>
+<summary><strong>Available Options</strong></summary>
+
+| Name   | Default                  | Description                       |
+| ------ | ------------------------ | --------------------------------- |
+| config | `"./tailwind.config.js"` | The path to your Tailwind config. |
+
+</details>
+
 ## Next.js SSR Setup
 
 In order to enable SSR support via media queries on Next.js, update your [custom document](https://nextjs.org/docs/advanced-features/custom-document) as follows:
