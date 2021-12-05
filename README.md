@@ -53,6 +53,7 @@ const Status = ({ isActive, labelColor }) => {
   - [Using the tw prop](#using-the-tw-prop)
   - [useTailwindStyles](#usetailwindstyles)
   - [TailwindProvider](#tailwindprovider)
+  - [Macro Options](#macro-options)
 - [Next.js SSR Setup](#nextjs-ssr-setup)
 - [How it works](#how-it-works)
 - [Caveats](#caveats)
