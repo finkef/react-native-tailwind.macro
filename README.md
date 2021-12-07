@@ -107,7 +107,7 @@ Add babel-plugin-macros to your `.babelrc` or `babel.config.js` and you're all s
 
 ### Using the `tw` prop
 
-The best and easiest usage is to simply use the `tw` prop that is artificially added to all JSX elements. Under the hood, the macro removes the `tw` prop completely and instead applies or extends a `style` prop and also adds a web-only media id used by [react-native-media-query](https://github.com/kasinskas/react-native-media-query) to apply CSS-based media queries.
+The best and easiest usage is to simply use the `tw` prop that is artificially added to all JSX elements. Under the hood, the macro removes the `tw` prop completely and instead applies or extends a `style` prop and also adds a web-only media id used to apply CSS-based media queries.
 
 All you have to do is have _any_ import of react-native-tailwind.macro in your file, either `import "react-native-tailwind.macro"` or `import { /* whatever import you need */ } from "react-native-tailwind.macro"`.
 
@@ -314,7 +314,7 @@ Behind the scenes, `react-native-tailwind.macro` turns your _simple_ code from t
 import "react-native-tailwind.macro"
 
 const Example = () => (
-  <View tw="w-[100px] h-[100px] bg-purple-500 dark:ios:lg:bg-pink-500" />
+  <View tw="w-[100px] h-[100px] bg-purple-500 dark:ios:lg:bg-pink-500 hover:bg-indigo-500" />
 )
 ```
 
@@ -330,6 +330,7 @@ const useStyles = ReactNativeTailwindMacro.createUseTailwindStyles({
   a7gsbs: [
     {
       dark: false,
+      selectors: [],
       style: {
         width: 100,
         height: 100,
@@ -338,13 +339,22 @@ const useStyles = ReactNativeTailwindMacro.createUseTailwindStyles({
     },
     {
       dark: true,
-      breakpoint: "lg",
+      breakpoint: {
+        label: "lg",
+        minWidth: "1024px",
+      },
+      selectors: [],
       platform: "ios",
       style: {
-        // Output for react-native-media-query
-        "@media(min-width: 1024px)": {
-          backgroundColor: "#ec4899",
-        },
+        backgroundColor: "#ec4899",
+      },
+    },
+    {
+      dark: false,
+      // Styles on web will only be applied on web
+      selectors: ["hover"],
+      style: {
+        backgroundColor: "#6366f1",
       },
     },
   ],
@@ -359,7 +369,7 @@ const Example = () => {
     <View
       // Apply the memoized style
       style={tailwindStyles["a7gsbs"]}
-      // Apply media id for CSS-based media queries using react-native-media-query
+      // Apply media id for CSS-based media queries
       dataSet={{ media: tailwindStyles["a7gsbs"].id }}
     />
   )
@@ -380,7 +390,7 @@ For more examples and use cases, check the [macro test snapshots](packages/react
 
 - [tailwind-react-native-classnames](https://github.com/jaredh159/tailwind-react-native-classnames): Used for compiling Tailwind styles
 
-- [react-native-media-query](https://github.com/kasinskas/react-native-media-query): Used for applying responsive styles with CSS media queries on the web
+- [react-native-media-query](https://github.com/kasinskas/react-native-media-query): Provides the base implementation used to enable CSS media query support
 
 - [twin.macro](https://github.com/ben-rogerson/twin.macro): Inspiration for writing a babel macro
 
