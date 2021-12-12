@@ -1,7 +1,10 @@
 import * as React from "react"
 
 import { View, Text } from "react-native"
-import { TailwindProvider } from "react-native-tailwind.macro"
+import {
+  getInitialColorScheme,
+  TailwindProvider,
+} from "react-native-tailwind.macro"
 import { Button } from "./Button"
 
 interface AppProps {
@@ -39,7 +42,7 @@ const App: React.FunctionComponent<AppProps> = ({ toggleTheme }) => {
 }
 
 export default () => {
-  const [dark, setDark] = React.useState(false)
+  const [dark, setDark] = React.useState(getInitialColorScheme() === "dark")
 
   return (
     <TailwindProvider dark={dark}>

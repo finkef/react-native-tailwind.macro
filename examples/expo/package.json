@@ -18,7 +18,6 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-media-query": "^1.0.7",
     "react-native-tailwind.macro": "*",
     "react-native-unimodules": "~0.12.0",
     "react-native-web": "~0.14.9"

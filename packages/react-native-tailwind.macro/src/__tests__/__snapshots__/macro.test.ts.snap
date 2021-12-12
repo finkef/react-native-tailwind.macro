@@ -39,7 +39,7 @@ const Prepend = () => {
         },
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -49,6 +49,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -85,7 +87,7 @@ const Append = () => {
         _tailwindStyles["mockId-1"],
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -95,6 +97,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -116,7 +120,7 @@ const Comp = () => {
     [isFocused]
   )
 
-  return <View tw="bg-blue-500" style={box} dataSet={{ media: box.id }} />
+  return <View tw="bg-blue-500" style={box} dataSet={{ tw: box.id }} />
 }
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -139,7 +143,7 @@ const Comp = () => {
     <View
       style={[_tailwindStyles["mockId-1"], box]}
       dataSet={{
-        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+        tw: _ReactNativeTailwindMacro.joinResponsiveIds(
           box.id,
           _tailwindStyles["mockId-1"].id
         ),
@@ -152,6 +156,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-QCNapfedmWWq_pCNAW1Vbw",
       style: {
         backgroundColor: "#3b82f6",
       },
@@ -163,23 +169,29 @@ const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
       dark: false,
-      breakpoint: "md",
+      selectors: [],
+      breakpoint: {
+        label: "md",
+        minWidth: "768px",
+      },
+      id: "rntwm-ICQub9WQ6pxaCmSgEP_Dyw",
       style: {
-        "@media(min-width: 768px)": {
-          paddingLeft: 32,
-          paddingRight: 32,
-        },
+        paddingLeft: 32,
+        paddingRight: 32,
       },
     },
   ],
   "mockId-3": [
     {
       dark: false,
-      breakpoint: "lg",
+      selectors: [],
+      breakpoint: {
+        label: "lg",
+        minWidth: "1024px",
+      },
+      id: "rntwm-l8OzFlAAuhkMqH0mxSHFRA",
       style: {
-        "@media(min-width: 1024px)": {
-          paddingTop: 64,
-        },
+        paddingTop: 64,
       },
     },
   ],
@@ -214,7 +226,7 @@ const Comp = () => {
         isFocused ? tw\`bg-blue-400\` : tw\`bg-pink-500\`,
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -224,6 +236,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-USsRiS2Y14wokhNvpfV_cA",
       style: {
         paddingTop: 32,
       },
@@ -240,7 +254,7 @@ import tw from "../../macro"
 
 const Comp = () => <View tw="px-8" dataSet={{ foo: "bar" }} />
 
-const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", media: "baz" }} />
+const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", tw: "baz" }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
@@ -254,7 +268,7 @@ const Comp = () => {
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
         foo: "bar",
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -268,7 +282,7 @@ const Comp2 = () => {
       style={_tailwindStyles2["mockId-2"]}
       dataSet={{
         foo: "bar",
-        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+        tw: _ReactNativeTailwindMacro.joinResponsiveIds(
           "baz",
           _tailwindStyles2["mockId-2"].id
         ),
@@ -281,6 +295,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -293,6 +309,8 @@ const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -359,6 +377,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -368,6 +388,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-rtskDjeUkZ+Qoz23W9Kucw",
       style: {
         paddingLeft: 64,
         paddingRight: 64,
@@ -412,6 +434,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -454,6 +478,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -486,13 +512,13 @@ const Comp = () => {
     <View
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     >
       <Text
         style={_tailwindStyles["mockId-2"]}
         dataSet={{
-          media: _tailwindStyles["mockId-2"].id,
+          tw: _tailwindStyles["mockId-2"].id,
         }}
       >
         Hello
@@ -505,34 +531,44 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-QCNapfedmWWq_pCNAW1Vbw",
       style: {
         backgroundColor: "#3b82f6",
       },
     },
     {
       dark: false,
-      breakpoint: "md",
+      selectors: [],
+      breakpoint: {
+        label: "md",
+        minWidth: "768px",
+      },
+      id: "rntwm-e0SKczQBFuXuSi8Lb9mOyA",
       style: {
-        "@media(min-width: 768px)": {
-          backgroundColor: "#ec4899",
-        },
+        backgroundColor: "#ec4899",
       },
     },
   ],
   "mockId-2": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-0YDC3qrbZAUxx0mzUCnxnw",
       style: {
         fontWeight: "bold",
       },
     },
     {
       dark: false,
-      breakpoint: "md",
+      selectors: [],
+      breakpoint: {
+        label: "md",
+        minWidth: "768px",
+      },
+      id: "rntwm-eLOoCGNsuFm4oGXCi6HChg",
       style: {
-        "@media(min-width: 768px)": {
-          fontWeight: "100",
-        },
+        fontWeight: "100",
       },
     },
   ],
@@ -563,7 +599,7 @@ const Prepend = () => {
         },
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -573,6 +609,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -606,7 +644,7 @@ const Append = () => {
         _tailwindStyles["mockId-1"],
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -616,6 +654,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -658,7 +698,7 @@ const Prepend = () => {
     <View
       style={[_tailwindStyles["mockId-1"], styles.a]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -668,6 +708,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -696,7 +738,7 @@ const Append = () => {
     <View
       style={[styles.a, _tailwindStyles["mockId-1"]]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -706,6 +748,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -753,6 +797,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,
@@ -781,7 +827,7 @@ const Comp = () => {
     <View
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -791,6 +837,8 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
       dark: false,
+      selectors: [],
+      id: "rntwm-tgfXYl7K1yBpFmsixLSeHA",
       style: {
         paddingLeft: 32,
         paddingRight: 32,

@@ -10,7 +10,7 @@
     "importsNotUsedAsValues": "remove",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["ES6"],
+    "lib": ["ES6", "DOM"],
     "module": "ES6",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

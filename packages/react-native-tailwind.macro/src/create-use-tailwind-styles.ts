@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
-import MediaQueryStyleSheet from "react-native-media-query"
-import { checkPlatform } from "./check-platform"
+import { Dimensions, Platform } from "react-native"
+import { registerStyle } from "./css-media-queries"
 import { useTailwind } from "./tailwind-context"
 import { TailwindStyleRule } from "./types"
 
@@ -11,29 +11,60 @@ export const createUseTailwindStyles = (
     const ctx = useTailwind()
 
     return useMemo(() => {
-      const { styles: styleSheet, ids } = MediaQueryStyleSheet.create(
-        Object.fromEntries(
-          Object.entries(styles).map(([key, arr]) => [
-            key,
-            Object.assign(
-              {},
-              ...checkPlatform(arr)
-                .filter(({ dark }) => !dark || ctx.dark)
-                .map(({ style }) => style)
-            ),
-          ])
-        )
+      const deviceWidth = Dimensions.get("window").width
+
+      const stylesheet = Object.fromEntries(
+        Object.entries(styles).map(([key, arr]) => {
+          const { mergedStyles, id } = arr
+            .filter(
+              ({ platform, dark, selectors, breakpoint }) =>
+                // Check platform
+                (!platform || platform === Platform.OS) &&
+                // Check dark mode
+                (!dark || Platform.OS === "web" || ctx.dark) &&
+                // Selectors are only valid on web
+                (!selectors.length || Platform.OS === "web") &&
+                // Validate device size on non-web
+                (!breakpoint ||
+                  Platform.OS === "web" ||
+                  deviceWidth >=
+                    parseInt(breakpoint.minWidth.replace("px", ""), 10))
+            )
+            .reduce<{ id: string; mergedStyles: Record<string, any> }>(
+              (acc, cur) => {
+                const requiresMediaQuery =
+                  cur.dark || cur.selectors.length || cur.breakpoint
+
+                if (Platform.OS === "web" && requiresMediaQuery) {
+                  // Add style to css stylesheet
+                  registerStyle(cur)
+
+                  return {
+                    // Skip responsive styles
+                    mergedStyles: acc.mergedStyles,
+                    id: [acc.id, cur.id].filter(Boolean).join(" "),
+                  }
+                }
+
+                return {
+                  mergedStyles: Object.assign(acc.mergedStyles, cur.style),
+                  id: acc.id,
+                }
+              },
+              { mergedStyles: {}, id: "" }
+            )
+
+          // Add non-enumerable id property to the style object to be applied to data-tw.
+          Object.defineProperty(mergedStyles, "id", {
+            value: id,
+            enumerable: false,
+          })
+
+          return [key, mergedStyles]
+        })
       )
 
-      for (const key in styleSheet) {
-        // add id as non-enumerable property to the styles
-        Object.defineProperty(styleSheet[key], "id", {
-          value: ids[key],
-          enumerable: false,
-        })
-      }
-
-      return styleSheet
+      return stylesheet
     }, [ctx])
   }
 }

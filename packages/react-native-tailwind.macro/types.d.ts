@@ -1,10 +1,24 @@
-import { flush } from "react-native-media-query"
 import { TailwindProvider } from "./src/tailwind-context"
+import {
+  getInitialColorScheme,
+  getColorSchemeFromCookie,
+  setColorSchemeCookie,
+} from "./src/utils"
 
 declare global {
   namespace JSX {
     interface IntrinsicAttributes {
       tw?: string
+
+      /**
+       * Only available in react-native-web. Allows setting data-* attributes on DOM elements.
+       */
+      dataSet?: {
+        /**
+         * Responsive id available from Tailwind styles, e.g. `styles.box.id`.
+         */
+        tw?: string
+      } & Record<string, any>
     }
   }
 }
@@ -16,8 +30,18 @@ declare const useTailwindStyles: <
 >(
   fn: T,
   deps?: any[]
-) => ReturnType<T>
+) => {
+  [key in keyof ReturnType<T>]: ReturnType<T>[key] & { readonly id?: string }
+}
 
-declare const flush: flush
+// eslint-disable-next-line no-undef
+declare const flush: () => JSX.Element
 
-export { useTailwindStyles, flush, TailwindProvider }
+export {
+  useTailwindStyles,
+  flush,
+  TailwindProvider,
+  getInitialColorScheme,
+  getColorSchemeFromCookie,
+  setColorSchemeCookie,
+}

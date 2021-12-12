@@ -6,5 +6,5 @@ const Comp = () => {
     [isFocused]
   )
 
-  return <View tw="bg-blue-500" style={box} dataSet={{ media: box.id }} />
+  return <View tw="bg-blue-500" style={box} dataSet={{ tw: box.id }} />
 }

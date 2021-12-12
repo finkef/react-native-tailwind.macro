@@ -14,7 +14,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ label, onPress }) => {
     (tw) => ({
       button: [
         tw`px-8 py-4 rounded-3xl bg-blue-500`,
-        pressed && tw`bg-blue-200`,
+        pressed ? tw`bg-blue-200` : tw`hover:bg-blue-400`,
       ],
       text: tw`text-white dark:text-black`,
     }),
@@ -27,7 +27,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ label, onPress }) => {
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <View style={styles.button}>
+      <View style={styles.button} dataSet={{ tw: styles.button.id }}>
         <Text style={styles.text}>{label}</Text>
       </View>
     </TouchableWithoutFeedback>

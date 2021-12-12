@@ -21,6 +21,8 @@
   },
   "scripts": {
     "start": "yarn clean && yarn next dev",
+    "build": "yarn clean && yarn next build",
+    "serve": "yarn next start",
     "clean": "rimraf .expo/web/cache"
   },
   "prettier": {

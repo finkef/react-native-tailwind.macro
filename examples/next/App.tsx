@@ -1,7 +1,10 @@
 import * as React from "react"
 
 import { View, Text } from "react-native"
-import { TailwindProvider } from "react-native-tailwind.macro"
+import {
+  TailwindProvider,
+  getInitialColorScheme,
+} from "react-native-tailwind.macro"
 import { Button } from "./components/Button"
 
 interface AppProps {
@@ -25,11 +28,21 @@ const App: React.FunctionComponent<AppProps> = ({ toggleTheme }) => {
       </Text>
 
       <Text tw="mt-16 font-bold text-xl dark:text-white">Breakpoints</Text>
-      <Text tw="dark:text-white xs:(font-bold text-blue-500)">xs</Text>
-      <Text tw="dark:text-white sm:(font-bold text-blue-500)">sm</Text>
-      <Text tw="dark:text-white md:(font-bold text-blue-500)">md</Text>
-      <Text tw="dark:text-white lg:(font-bold text-blue-500)">lg</Text>
-      <Text tw="dark:text-white xl:(font-bold text-blue-500)">xl</Text>
+      <Text tw="dark:text-white xs:(font-bold text-blue-500 dark:text-pink-500)">
+        xs
+      </Text>
+      <Text tw="dark:text-white sm:(font-bold text-blue-500 dark:text-pink-500)">
+        sm
+      </Text>
+      <Text tw="dark:text-white md:(font-bold text-blue-500 dark:text-pink-500)">
+        md
+      </Text>
+      <Text tw="dark:text-white lg:(font-bold text-blue-500 dark:text-pink-500)">
+        lg
+      </Text>
+      <Text tw="dark:text-white xl:(font-bold text-blue-500 dark:text-pink-500)">
+        xl
+      </Text>
 
       <Text tw="mt-8 text-custom">
         Text using custom color from tailwind.config.js
@@ -39,7 +52,7 @@ const App: React.FunctionComponent<AppProps> = ({ toggleTheme }) => {
 }
 
 export default () => {
-  const [dark, setDark] = React.useState(false)
+  const [dark, setDark] = React.useState(getInitialColorScheme() === "dark")
 
   return (
     <TailwindProvider dark={dark}>

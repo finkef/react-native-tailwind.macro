@@ -1,8 +1,9 @@
 import { PlatformOSType } from "react-native"
 import { TailwindConfig } from "tailwindcss/tailwind-config"
-import { TailwindStyleRule } from "../types"
 import { TwConfig } from "twrnc"
 import create from "twrnc/create"
+import { createHash } from "crypto"
+import { TailwindStyleRule } from "../types"
 
 /**
  * Matches balanced parentheses and content, with up to 5 levels of nesting.
@@ -22,6 +23,15 @@ const PLATFORMS = new Set<PlatformOSType>([
   "web",
   "macos",
   "windows",
+])
+
+const SELECTORS = new Set<string>([
+  "active",
+  "hover",
+  "focus",
+  "focus-within",
+  "focus-visible",
+  "visited",
 ])
 
 /**
@@ -89,7 +99,7 @@ const groupByPrefixes = (
 const resolvePrefixes = (
   prefixes: string[],
   twConfig: TailwindConfig
-): Omit<TailwindStyleRule, "style"> => {
+): Omit<TailwindStyleRule, "id" | "style"> => {
   // Breakpoints are sorted ascending in min-width
   const breakpoints = Object.keys(twConfig.theme.screens ?? {})
 
@@ -109,7 +119,14 @@ const resolvePrefixes = (
     platform: prefixes.find((prefix) =>
       PLATFORMS.has(prefix as PlatformOSType)
     ) as PlatformOSType,
-    breakpoint,
+    selectors: prefixes.filter((prefix) => SELECTORS.has(prefix)),
+    breakpoint: breakpoint
+      ? {
+          label: breakpoint,
+          // @ts-ignore
+          minWidth: twConfig.theme.screens[breakpoint],
+        }
+      : undefined,
   }
 }
 
@@ -136,15 +153,18 @@ export const transformStyles = (
     const resolvedStyle = styles
       .map((style) => tw`${style}`)
       .reduce((acc, cur) => Object.assign(acc, cur), {})
-    const mediaAdjustedStyle = resolvedPrefixes.breakpoint
-      ? {
-          [`@media(min-width: ${
-            // @ts-ignore
-            twConfig.theme.screens[resolvedPrefixes.breakpoint]
-          })`]: resolvedStyle,
-        }
-      : resolvedStyle
 
-    return { ...resolvedPrefixes, style: mediaAdjustedStyle }
+    return {
+      ...resolvedPrefixes,
+      id: `rntwm-${hash(JSON.stringify({ prefixes, resolvedStyle }))}`,
+      style: resolvedStyle,
+    }
   })
 }
+
+const hash = (str: string) =>
+  createHash("md5")
+    .update(str)
+    .digest("base64")
+    .replace(/\//g, "_")
+    .replace(/[=]/g, "")

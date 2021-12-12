@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useMemo } from "react"
-import { Appearance, Platform } from "react-native"
+import React, { createContext, useContext, useEffect, useMemo } from "react"
+import { Platform } from "react-native"
+import { getInitialColorScheme, setColorSchemeCookie } from "./utils"
 
 export interface TailwindContext {
   dark: boolean
@@ -7,7 +8,7 @@ export interface TailwindContext {
 }
 
 const DEFAULT_CONTEXT = {
-  dark: Appearance.getColorScheme() === "dark",
+  dark: getInitialColorScheme() === "dark",
   platform: Platform.OS,
 }
 
@@ -25,6 +26,18 @@ export const TailwindProvider: React.FunctionComponent<
     () => ({ ...DEFAULT_CONTEXT, dark: Boolean(dark) }),
     [dark]
   )
+
+  useEffect(() => {
+    if (Platform.OS === "web" && typeof document !== "undefined") {
+      document.body.classList.add(dark ? "rntwm-dark" : "rntwm-light")
+      document.body.classList.remove(dark ? "rntwm-light" : "rntwm-dark")
+
+      if (typeof dark !== "undefined") {
+        // Persist the selection in a cookie
+        setColorSchemeCookie(dark ? "dark" : "light")
+      }
+    }
+  }, [dark])
 
   return <Context.Provider value={value}>{children}</Context.Provider>
 }
