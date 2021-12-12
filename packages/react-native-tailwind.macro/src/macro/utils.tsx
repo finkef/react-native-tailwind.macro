@@ -274,7 +274,7 @@ export function moveTwPropToStyle({
 }
 
 /**
- * Adds the responsive ids to the dataSet media property.
+ * Adds the responsive ids to the dataSet tw property.
  */
 export function addResponsiveId({
   path,
@@ -296,7 +296,7 @@ export function addResponsiveId({
     )
 
   const objectProperty = t.objectProperty(
-    t.identifier("media"),
+    t.identifier("tw"),
     t.memberExpression(
       t.memberExpression(
         t.identifier(component.state.stylesIdentifier),
@@ -323,23 +323,23 @@ export function addResponsiveId({
         "dataSet must be an inline object definition for react-native-tailwind.macro to apply responsive styles."
       )
 
-    const mediaProperty = expression
+    const twProperty = expression
       .get("properties")
       .find(
         (prop): prop is NodePath<ObjectProperty> =>
           prop.isObjectProperty() &&
-          (prop.get("key") as NodePath<any>).node?.name === "media"
+          (prop.get("key") as NodePath<any>).node?.name === "tw"
       )
 
-    if (mediaProperty) {
-      const value = mediaProperty.get("value")
+    if (twProperty) {
+      const value = twProperty.get("value")
 
       if (
         !value.isExpression() &&
         !value.isJSXNamespacedName() &&
         !value.isSpreadElement()
       )
-        throw new MacroError("Cannot augment dataSet media property.")
+        throw new MacroError("Cannot augment dataSet tw property.")
 
       value.replaceWith(
         t.callExpression(

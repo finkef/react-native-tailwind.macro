@@ -21,7 +21,7 @@ export const createUseTailwindStyles = (
                 // Check platform
                 (!platform || platform === Platform.OS) &&
                 // Check dark mode
-                (!dark || ctx.dark) &&
+                (!dark || Platform.OS === "web" || ctx.dark) &&
                 // Selectors are only valid on web
                 (!selectors.length || Platform.OS === "web") &&
                 // Validate device size on non-web
@@ -33,7 +33,7 @@ export const createUseTailwindStyles = (
             .reduce<{ id: string; mergedStyles: Record<string, any> }>(
               (acc, cur) => {
                 const requiresMediaQuery =
-                  cur.selectors.length || cur.breakpoint
+                  cur.dark || cur.selectors.length || cur.breakpoint
 
                 if (Platform.OS === "web" && requiresMediaQuery) {
                   // Add style to css stylesheet
@@ -54,7 +54,7 @@ export const createUseTailwindStyles = (
               { mergedStyles: {}, id: "" }
             )
 
-          // Add non-enumerable id property to the style object to be applied to data-media.
+          // Add non-enumerable id property to the style object to be applied to data-tw.
           Object.defineProperty(mergedStyles, "id", {
             value: id,
             enumerable: false,

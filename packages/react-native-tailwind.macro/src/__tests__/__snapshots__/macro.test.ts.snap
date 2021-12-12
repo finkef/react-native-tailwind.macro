@@ -39,7 +39,7 @@ const Prepend = () => {
         },
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -87,7 +87,7 @@ const Append = () => {
         _tailwindStyles["mockId-1"],
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -120,7 +120,7 @@ const Comp = () => {
     [isFocused]
   )
 
-  return <View tw="bg-blue-500" style={box} dataSet={{ media: box.id }} />
+  return <View tw="bg-blue-500" style={box} dataSet={{ tw: box.id }} />
 }
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -143,7 +143,7 @@ const Comp = () => {
     <View
       style={[_tailwindStyles["mockId-1"], box]}
       dataSet={{
-        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+        tw: _ReactNativeTailwindMacro.joinResponsiveIds(
           box.id,
           _tailwindStyles["mockId-1"].id
         ),
@@ -226,7 +226,7 @@ const Comp = () => {
         isFocused ? tw\`bg-blue-400\` : tw\`bg-pink-500\`,
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -254,7 +254,7 @@ import tw from "../../macro"
 
 const Comp = () => <View tw="px-8" dataSet={{ foo: "bar" }} />
 
-const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", media: "baz" }} />
+const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", tw: "baz" }} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
@@ -268,7 +268,7 @@ const Comp = () => {
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
         foo: "bar",
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -282,7 +282,7 @@ const Comp2 = () => {
       style={_tailwindStyles2["mockId-2"]}
       dataSet={{
         foo: "bar",
-        media: _ReactNativeTailwindMacro.joinResponsiveIds(
+        tw: _ReactNativeTailwindMacro.joinResponsiveIds(
           "baz",
           _tailwindStyles2["mockId-2"].id
         ),
@@ -512,13 +512,13 @@ const Comp = () => {
     <View
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     >
       <Text
         style={_tailwindStyles["mockId-2"]}
         dataSet={{
-          media: _tailwindStyles["mockId-2"].id,
+          tw: _tailwindStyles["mockId-2"].id,
         }}
       >
         Hello
@@ -599,7 +599,7 @@ const Prepend = () => {
         },
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -644,7 +644,7 @@ const Append = () => {
         _tailwindStyles["mockId-1"],
       ]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -698,7 +698,7 @@ const Prepend = () => {
     <View
       style={[_tailwindStyles["mockId-1"], styles.a]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -738,7 +738,7 @@ const Append = () => {
     <View
       style={[styles.a, _tailwindStyles["mockId-1"]]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )
@@ -827,7 +827,7 @@ const Comp = () => {
     <View
       style={_tailwindStyles["mockId-1"]}
       dataSet={{
-        media: _tailwindStyles["mockId-1"].id,
+        tw: _tailwindStyles["mockId-1"].id,
       }}
     />
   )

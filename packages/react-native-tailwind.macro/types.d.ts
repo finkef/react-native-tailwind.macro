@@ -1,5 +1,9 @@
-import { DetailedReactHTMLElement } from "react"
 import { TailwindProvider } from "./src/tailwind-context"
+import {
+  getInitialColorScheme,
+  getColorSchemeFromCookie,
+  setColorSchemeCookie,
+} from "./src/utils"
 
 declare global {
   namespace JSX {
@@ -9,7 +13,12 @@ declare global {
       /**
        * Only available in react-native-web. Allows setting data-* attributes on DOM elements.
        */
-      dataSet?: Record<string, any>
+      dataSet?: {
+        /**
+         * Responsive id available from Tailwind styles, e.g. `styles.box.id`.
+         */
+        tw?: string
+      } & Record<string, any>
     }
   }
 }
@@ -25,16 +34,14 @@ declare const useTailwindStyles: <
   [key in keyof ReturnType<T>]: ReturnType<T>[key] & { readonly id?: string }
 }
 
-declare const flush: () => DetailedReactHTMLElement<
-  {
-    id: string
-    key: string
-    dangerouslySetInnerHTML: {
-      __html: string
-    }
-  },
-  // eslint-disable-next-line no-undef
-  HTMLElement
->
+// eslint-disable-next-line no-undef
+declare const flush: () => JSX.Element
 
-export { useTailwindStyles, flush, TailwindProvider }
+export {
+  useTailwindStyles,
+  flush,
+  TailwindProvider,
+  getInitialColorScheme,
+  getColorSchemeFromCookie,
+  setColorSchemeCookie,
+}
