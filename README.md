@@ -75,6 +75,10 @@ const Status = ({ isActive, labelColor }) => {
 
   `ios:bg-blue-800 android:bg-purple-800`
 
+- 🖥&nbsp;&nbsp;&nbsp;Web only selectors
+
+  `focus:bg-blue-400 active:bg-indigo-400`
+
 - 🕺&nbsp;&nbsp;&nbsp;Stackable selectors
 
   `ios:md:font-bold android:(text-blue-800 sm:dark:text-blue-100)`
@@ -107,7 +111,7 @@ Add babel-plugin-macros to your `.babelrc` or `babel.config.js` and you're all s
 
 ### Using the `tw` prop
 
-The best and easiest usage is to simply use the `tw` prop that is artificially added to all JSX elements. Under the hood, the macro removes the `tw` prop completely and instead applies or extends a `style` prop and also adds a web-only media id used to apply CSS-based media queries.
+The best and easiest usage is to simply use the `tw` prop that is artificially added to all JSX elements. Under the hood, the macro removes the `tw` prop completely and instead applies or extends a `style` prop and also adds a web-only data-tw id used to apply CSS-based media queries.
 
 All you have to do is have _any_ import of react-native-tailwind.macro in your file, either `import "react-native-tailwind.macro"` or `import { /* whatever import you need */ } from "react-native-tailwind.macro"`.
 
@@ -197,7 +201,7 @@ const Example = ({ rounded, backgroundColor }) => {
       <Animated.View
         style={styles.box}
         {/* Required for responsive styles on the web, hence it's preferred to apply all responsive styles through the `tw` prop */}
-        dataSet={{ media: styles.box.id }}
+        dataSet={{ tw: styles.box.id }}
       />
       <TouchableOpacity
         {/* Mix and match tw prop and styles in your code */}
@@ -228,18 +232,29 @@ const styles = useTailwindStyles(
 
 By default, the device's color scheme preference is used to enable dark mode. If you want to dynamically change whether dark mode is enabled, you can wrap your App with `TailwindProvider` and pass in your dark mode preference.
 
+On the web, the set value will automatically be persisted in a cookie to enable SSR and SSG without flashes on load.
+
 ```ts
-import { Appearance } from "react-native"
-import { TailwindProvider } from "react-native-tailwind.macro"
+import {
+  TailwindProvider,
+  getInitialColorScheme,
+} from "react-native-tailwind.macro"
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(
-    // Use device preference as default
-    Appearance.getColorScheme() === "dark"
-  )
+  const [darkMode, setDarkMode] = useState(getInitialColorScheme() === "dark")
 
   return <TailwindProvider dark={darkMode}>{/* ... */}</TailwindProvider>
 }
+```
+
+### `getInitialColorScheme`
+
+Returns either the cookie-persisted preference on web or falls back to the system preference.
+
+```ts
+import { getInitialColorScheme } from "react-native-tailwind.macro"
+
+getInitialColorScheme() // returns "light" or "dark"
 ```
 
 ### Macro Options
@@ -282,9 +297,10 @@ Alternatively:
 
 In order to enable SSR support via media queries on Next.js, update your [custom document](https://nextjs.org/docs/advanced-features/custom-document) as follows:
 
-```ts
-// Add the flush import
-import { flush } from "react-native-tailwind.macro"
+```diff
+// pages/_document.js
+
++ import { flush } from "react-native-tailwind.macro"
 
 /* ... */
 
@@ -295,7 +311,7 @@ export class Document extends NextDocument {
     const page = renderPage()
     const styles = [
       getStyleElement(),
-      flush(), // Add this call
++     flush(),
     ]
     return { ...page, styles: React.Children.toArray(styles) }
   }
@@ -369,8 +385,8 @@ const Example = () => {
     <View
       // Apply the memoized style
       style={tailwindStyles["a7gsbs"]}
-      // Apply media id for CSS-based media queries
-      dataSet={{ media: tailwindStyles["a7gsbs"].id }}
+      // Apply data-tw id for CSS-based media queries
+      dataSet={{ tw: tailwindStyles["a7gsbs"].id }}
     />
   )
 }
