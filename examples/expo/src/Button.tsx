@@ -27,8 +27,10 @@ export const Button: FunctionComponent<ButtonProps> = ({ label, onPress }) => {
       onPressOut={() => setPressed(false)}
       onPress={onPress}
     >
-      <View style={styles.button}>
-        <Text style={styles.text}>{label}</Text>
+      <View style={styles.button} dataSet={{ tw: styles.button.id }}>
+        <Text style={styles.text} dataSet={{ tw: styles.text.id }}>
+          {label}
+        </Text>
       </View>
     </TouchableWithoutFeedback>
   )
