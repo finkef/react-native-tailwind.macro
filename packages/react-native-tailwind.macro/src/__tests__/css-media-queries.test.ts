@@ -7,12 +7,12 @@ describe("createCssRule", () => {
         id: "a",
         dark: false,
         selectors: [],
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "[data-tw~=\\"a\\"] {margin-top:24px !important}",
-        "media": "[data-tw~=\\"a\\"] {margin-top:24px !important}",
+        "class": "[data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
+        "media": "[data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
       }
     `)
   })
@@ -27,12 +27,12 @@ describe("createCssRule", () => {
           label: "lg",
           minWidth: "1024px",
         },
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "@media (min-width: 1024px) { [data-tw~=\\"a\\"]:focus {margin-top:24px !important} }",
-        "media": "@media (min-width: 1024px) { [data-tw~=\\"a\\"]:focus {margin-top:24px !important} }",
+        "class": "@media (min-width: 1024px) { [data-tw~=\\"a\\"]:focus {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
+        "media": "@media (min-width: 1024px) { [data-tw~=\\"a\\"]:focus {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
       }
     `)
   })
@@ -43,12 +43,12 @@ describe("createCssRule", () => {
         id: "a",
         dark: false,
         selectors: ["focus", "active"],
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "[data-tw~=\\"a\\"]:focus:active {margin-top:24px !important}",
-        "media": "[data-tw~=\\"a\\"]:focus:active {margin-top:24px !important}",
+        "class": "[data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
+        "media": "[data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
       }
     `)
   })
@@ -59,12 +59,12 @@ describe("createCssRule", () => {
         id: "a",
         dark: false,
         selectors: ["focus", "active"],
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "[data-tw~=\\"a\\"]:focus:active {margin-top:24px !important}",
-        "media": "[data-tw~=\\"a\\"]:focus:active {margin-top:24px !important}",
+        "class": "[data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
+        "media": "[data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
       }
     `)
   })
@@ -75,12 +75,12 @@ describe("createCssRule", () => {
         id: "a",
         dark: true,
         selectors: [],
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": ".rntwm-dark [data-tw~=\\"a\\"] {margin-top:24px !important}",
-        "media": "@media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"] {margin-top:24px !important} }",
+        "class": ".rntwm-dark [data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
+        "media": "@media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
       }
     `)
   })
@@ -95,12 +95,12 @@ describe("createCssRule", () => {
           label: "lg",
           minWidth: "1024px",
         },
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "@media (min-width: 1024px) { .rntwm-dark [data-tw~=\\"a\\"] {margin-top:24px !important} }",
-        "media": "@media (min-width: 1024px) { @media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"] {margin-top:24px !important} } }",
+        "class": "@media (min-width: 1024px) { .rntwm-dark [data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
+        "media": "@media (min-width: 1024px) { @media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"] {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} } }",
       }
     `)
   })
@@ -111,12 +111,12 @@ describe("createCssRule", () => {
         id: "a",
         dark: true,
         selectors: ["focus", "active"],
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": ".rntwm-dark [data-tw~=\\"a\\"]:focus:active {margin-top:24px !important}",
-        "media": "@media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"]:focus:active {margin-top:24px !important} }",
+        "class": ".rntwm-dark [data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important}",
+        "media": "@media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
       }
     `)
   })
@@ -131,12 +131,12 @@ describe("createCssRule", () => {
           label: "lg",
           minWidth: "1024px",
         },
-        style: { marginTop: 24 },
+        style: { marginTop: 24, display: "flex" },
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "class": "@media (min-width: 1024px) { .rntwm-dark [data-tw~=\\"a\\"]:focus:active {margin-top:24px !important} }",
-        "media": "@media (min-width: 1024px) { @media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"]:focus:active {margin-top:24px !important} } }",
+        "class": "@media (min-width: 1024px) { .rntwm-dark [data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} }",
+        "media": "@media (min-width: 1024px) { @media (prefers-color-scheme: dark) { [data-tw~=\\"a\\"]:focus:active {display:-webkit-box !important;display:-moz-box !important;display:-ms-flexbox !important;display:-webkit-flex !important;display:flex !important;margin-top:24px !important} } }",
       }
     `)
   })
