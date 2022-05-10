@@ -57,7 +57,7 @@ export const createCssRule = ({
     .map(([key, value]) => {
       const prop = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
       return Array.isArray(value)
-        ? value.map((v) => `${prop}:${v}`).join(";")
+        ? value.map((v) => `${prop}:${v} !important`).join(";")
         : `${prop}:${value} !important`
     })
     .sort()
