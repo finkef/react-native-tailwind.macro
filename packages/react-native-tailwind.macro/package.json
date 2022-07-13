@@ -1,6 +1,6 @@
 {
   "name": "react-native-tailwind.macro",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Babel macro for writing Tailwind styles in React Native (+ Web)",
   "main": "dist/cjs",
   "module": "dist",
