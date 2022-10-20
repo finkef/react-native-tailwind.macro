@@ -121,6 +121,26 @@ test("parseString", () => {
       },
     ]
   `)
+
+  expect(parseString("pt-8 bg-[#abababab] ios:text-blue-500/75"))
+    .toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "content": "pt-8",
+        "prefixes": Array [],
+      },
+      Object {
+        "content": "bg-[#abababab]",
+        "prefixes": Array [],
+      },
+      Object {
+        "content": "text-blue-500/75",
+        "prefixes": Array [
+          "ios",
+        ],
+      },
+    ]
+  `)
 })
 
 describe("transformStyles", () => {

@@ -25,10 +25,8 @@ const Prepend = () => (
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[
@@ -44,7 +42,6 @@ const Prepend = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -73,10 +70,8 @@ const Append = () => (
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Append = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[
@@ -92,7 +87,6 @@ const Append = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -126,19 +120,15 @@ const Comp = () => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _styles = _useStyles2()
-
   const _tailwindStyles = _useStyles()
-
   const { box } = _ReactNativeTailwindMacro.useTailwindStyles(
     (tw) => ({
       box: isFocused ? _styles["mockId-2"] : _styles["mockId-3"],
     }),
     [_styles, isFocused]
   )
-
   return (
     <View
       style={[_tailwindStyles["mockId-1"], box]}
@@ -151,7 +141,6 @@ const Comp = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -164,7 +153,6 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
     },
   ],
 })
-
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
@@ -214,10 +202,8 @@ const Comp = () => (
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[
@@ -231,7 +217,6 @@ const Comp = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -259,10 +244,8 @@ const Comp2 = () => <View tw="px-8" dataSet={{ foo: "bar", tw: "baz" }} />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={_tailwindStyles["mockId-1"]}
@@ -273,10 +256,8 @@ const Comp = () => {
     />
   )
 }
-
 const Comp2 = () => {
   const _tailwindStyles2 = _useStyles2()
-
   return (
     <View
       style={_tailwindStyles2["mockId-2"]}
@@ -290,7 +271,6 @@ const Comp2 = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -304,7 +284,6 @@ const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
     },
   ],
 })
-
 const _useStyles2 = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-2": [
     {
@@ -331,7 +310,6 @@ flush()
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 _ReactNativeTailwindMacro.flush()
 
 
@@ -357,22 +335,17 @@ const Comp = () => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _styles = _useStyles()
-
   const [isFocused] = useState(false)
-
   const styles = _ReactNativeTailwindMacro.useTailwindStyles(
     (tw) => ({
       box: isFocused ? _styles["mockId-1"] : _styles["mockId-2"],
     }),
     [_styles, isFocused]
   )
-
   return <View style={styles.box} />
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -416,20 +389,16 @@ const Comp = () => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _styles = _useStyles()
-
   const styles = _ReactNativeTailwindMacro.useTailwindStyles(
     (tw) => ({
       box: _styles["mockId-1"],
     }),
     [_styles]
   )
-
   return <View style={styles.box} />
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -462,10 +431,8 @@ const useMyCustomHook = () =>
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const useMyCustomHook = () => {
   const _styles = _useStyles()
-
   return _ReactNativeTailwindMacro.useTailwindStyles(
     (tw) => ({
       box: _styles["mockId-1"],
@@ -473,7 +440,6 @@ const useMyCustomHook = () => {
     [_styles]
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -504,10 +470,8 @@ const Comp = () => (
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={_tailwindStyles["mockId-1"]}
@@ -526,7 +490,6 @@ const Comp = () => {
     </View>
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -586,10 +549,8 @@ const Prepend = () => <View tw="px-8" style={{ backgroundColor: 'pink' }} />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[
@@ -604,7 +565,6 @@ const Prepend = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -631,10 +591,8 @@ const Append = () => <View style={{ backgroundColor: 'pink' }} tw="px-8" />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Append = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[
@@ -649,7 +607,6 @@ const Append = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -690,10 +647,8 @@ const Prepend = () => <View tw="px-8" style={styles.a} />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Prepend = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[_tailwindStyles["mockId-1"], styles.a]}
@@ -703,7 +658,6 @@ const Prepend = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -730,10 +684,8 @@ const Append = () => <View style={styles.a} tw="px-8" />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Append = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={[styles.a, _tailwindStyles["mockId-1"]]}
@@ -743,7 +695,6 @@ const Append = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -779,20 +730,16 @@ const useMyCustomHook = () => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const useMyCustomHook = () => {
   const _styles = _useStyles()
-
   const styles = _ReactNativeTailwindMacro.useTailwindStyles(
     (tw) => ({
       box: _styles["mockId-1"],
     }),
     [_styles]
   )
-
   return styles
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {
@@ -819,10 +766,8 @@ const Comp = () => <View tw="px-8" />
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import * as _ReactNativeTailwindMacro from "../../macro/dist/exports"
-
 const Comp = () => {
   const _tailwindStyles = _useStyles()
-
   return (
     <View
       style={_tailwindStyles["mockId-1"]}
@@ -832,7 +777,6 @@ const Comp = () => {
     />
   )
 }
-
 const _useStyles = _ReactNativeTailwindMacro.createUseTailwindStyles({
   "mockId-1": [
     {

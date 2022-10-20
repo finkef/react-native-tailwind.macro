@@ -15,7 +15,7 @@ const BALANCED_PARENTHESES_REGEX =
 /**
  * Matches simple tailwind styles, like "pt-8" or "ios:pt-2"
  */
-const REGEX = /(?:(?<prefix>(?:[\w\d-[\]]+:?)*):)?(?:(?<content>[\w\d-[\]]+))/g
+const REGEX = /(?:(?<prefix>(?:[\w\d-[\]]+:?)*):)?(?:(?<content>[^:\s\(\)]+))/g
 
 const PLATFORMS = new Set<PlatformOSType>([
   "ios",
